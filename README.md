@@ -7,4 +7,4 @@ And by using Spring boot @RestController to put an Arduino LED on and off really
 ps: The Arduino uses the "StandardFirmata" schema you can find it in the Arduino examples schemas.
 </br>
 # SpringSecurity
-A fully functional spring security backend server
+A fully functional spring security backend REST server
