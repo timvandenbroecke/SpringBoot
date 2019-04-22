@@ -6,7 +6,7 @@ In this very small project you can control the arduino through the Raspberry pi 
 And by using Spring boot @RestController to put an Arduino LED on and off really easy.</br>
 ps: The Arduino uses the "StandardFirmata" schema you can find it in the Arduino examples schemas.
 # SpringBootScala
-SpringBoot + JPA</br>
+SpringBoot + JPA + Scala</br>
 Standard REST SpringBoot server made in Scala!
 # SpringSecurity
 A fully functional spring security backend REST server
