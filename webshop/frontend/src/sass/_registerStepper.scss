@@ -1,0 +1,42 @@
+.stepper {
+    width: 90%;
+    padding: 3em;
+    position: absolute;
+    top: 2.5%;
+    left: 5%;
+    
+}
+
+.stepper_container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-register {
+    width: 40em;
+    overflow: auto;
+    height: 40em;
+}
+
+.form-button {
+    bottom: 0;
+    position: absolute;
+}
+
+.register-field:not(last-child) {
+    
+    padding-bottom: 1.5em;
+}
+
+.form-register-submit {
+    display: flex;
+    padding-top: 3%;
+
+    .left-submit {
+        text-align: right;
+    }
+
+    .right-submit {
+        padding-left: 3%;
+    }
+}

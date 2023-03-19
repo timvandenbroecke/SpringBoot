@@ -1,0 +1,108 @@
+
+//  Header scss
+.header {
+    padding: 2rem;
+    background-color: var(--color-grey-light-1);
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    line-height: 1.6;
+    font-size: 0.8em;
+
+    // Bottom shadow
+    -moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    
+    .header-title {
+        display: flex;
+        align-items: center;
+    }
+
+    // Left side links to Watchets, Jewelry etc...
+    .left_links {
+        display: flex;
+        align-items: center;
+
+        & > a {
+            margin-right: 3rem;
+            color: black;
+            text-decoration: none;
+
+        }
+
+        // On hover links
+        & > a:hover {
+           
+            color: rgb(106, 106, 106);
+            cursor: pointer;
+          //  animation-name: smooth_out;
+          //  animation-duration: 1s;
+            animation: smooth_in .8s;
+            animation-fill-mode: forwards;  
+            
+        }
+    }
+
+    // Login
+    .login {
+        display: flex;
+        margin-left: 3rem;
+        align-items: center;
+        
+
+        & > p {
+            color: black;
+            margin-right: 3rem;
+            text-decoration: none;
+
+        }
+
+        & > p:hover {
+           
+            color: rgb(106, 106, 106);
+            cursor: pointer;
+            animation: smooth_in .8s;
+            animation-fill-mode: forwards; 
+        }
+
+
+    }
+
+    .hamburger {
+       visibility: hidden;
+       display: none;
+    }
+
+    
+@keyframes smooth_in {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+      }
+      
+      100% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+
+  }
+}
+
+
+//  Responsive 
+@media only screen and (max-width: 640px) {
+ .header {
+
+    
+    
+      .left_links  {
+        display: none;
+      }
+      .hamburger {
+        visibility: visible;
+        display: inline;
+      }
+ }
+
+}

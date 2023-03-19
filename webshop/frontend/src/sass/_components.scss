@@ -1,0 +1,22 @@
+.sidedrawer {
+
+    display: none;
+}
+
+.side-text {
+    text-decoration: none;
+    font-weight: 800;
+    line-height: 1.6;
+    font-size: medium;
+    color: black;
+
+}
+
+//  Responsive 
+@media only screen and (max-width: 640px) {
+
+    .sidedrawer {
+        display: initial;
+    }
+       
+}

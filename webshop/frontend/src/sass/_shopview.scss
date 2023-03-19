@@ -1,0 +1,19 @@
+.shopview_container {
+    padding-top: 3em;
+    padding-bottom: 80px;
+}
+
+.pagination_shopview {
+
+    background-color: var(--color-grey-light-1);
+    width: 350px;
+    margin-left: -175px;
+    bottom: 0;
+    position: fixed;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    
+    
+}

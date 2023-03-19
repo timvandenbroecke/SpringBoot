@@ -1,0 +1,25 @@
+.shopcard_container {
+    animation: fadeInAnimation ease .8s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    .card:hover {
+
+        transform: scale(1.1);
+
+    }
+
+    .card {
+        transition: transform .25s, visibility .25s ease-in;
+    }
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+

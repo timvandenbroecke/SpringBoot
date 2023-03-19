@@ -1,0 +1,40 @@
+.login-container {
+
+    margin: 0 auto;
+    width: 80rem;
+    padding: 3rem;
+
+    .login-close {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 2rem;
+        padding-right: 2rem;
+    }
+
+    .login-header {
+        
+        display: flex;
+        justify-content: center;
+        padding-bottom: 2rem;
+    }
+
+    .form-container{
+        height: 300px;
+        display: flex;
+
+        .form-login {
+            display: inline-block;
+            justify-content: center;
+            width: 100%;
+            
+        
+            .login-textfield{
+
+                width: 60%;
+            }
+            
+        }
+    }
+
+    
+}
