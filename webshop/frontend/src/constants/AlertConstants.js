@@ -6,7 +6,8 @@ export const ERR_NETWORK      = "ERR_NETWORK";
 export const ERR_BAD_REQUEST  = "ERR_BAD_REQUEST";
 export const LOGIN_EXCEPTION  = "LOGIN_EXCEPTION";
 export const TRANSACTIONAL_EXCEPTION = "TRANSACTIONAL_EXCEPTION"; 
-export const REGISTER_EXCEPTION = "REGISTER_EXCEPTION"
+export const REGISTER_EXCEPTION = "REGISTER_EXCEPTION";
+export const BAD_REQUEST = "BAD_REQUEST";
 
 export const SEVERITY_ERROR   = "error";
 export const SEVERITY_WARNING = "warning";

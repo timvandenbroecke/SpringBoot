@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {alert} from '../redux/actions';
-import {ERR_NETWORK, SEVERITY_ERROR, ERR_BAD_REQUEST, LOGIN_EXCEPTION, TRANSACTIONAL_EXCEPTION, REGISTER_EXCEPTION} from "../constants/AlertConstants";
+import {ERR_NETWORK, SEVERITY_ERROR, ERR_BAD_REQUEST, LOGIN_EXCEPTION, TRANSACTIONAL_EXCEPTION, REGISTER_EXCEPTION, BAD_REQUEST} from "../constants/AlertConstants";
 
 
 class Axios {
@@ -43,6 +43,9 @@ class Axios {
             case ERR_BAD_REQUEST:
                 this.errorCode = ERR_BAD_REQUEST;
                 this.errorSeverity = SEVERITY_ERROR;
+            case BAD_REQUEST:
+                this.errorCode = BAD_REQUEST;
+                this.errorSeverity = SEVERITY_ERROR;
 
             case LOGIN_EXCEPTION:
                 this.errorCode = LOGIN_EXCEPTION;
@@ -56,7 +59,7 @@ class Axios {
                 this.errorCode = REGISTER_EXCEPTION;
                 this.errorSeverity = SEVERITY_ERROR;
             default:
-
+            
             return;
         }
     }

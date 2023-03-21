@@ -4,6 +4,13 @@ import { withTranslation } from 'react-i18next';
 import { NavLink } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link } from "react-router-dom";
+import Badge from '@mui/material/Badge';
+import { Stack } from "@mui/system";
+
+
+
 
 class Header extends Component {
     constructor(){
@@ -45,8 +52,14 @@ class Header extends Component {
                 </div>
                 {isAuthenticated ?
                 
-                <div>
-                    Profile
+                <div className="login">
+                    <NavLink to="/cart">
+                        <Stack spacing={2} direction="row" >
+                            <Badge badgeContent={4} color="success" className="badge">
+                                <ShoppingCartIcon className="cart"/>
+                            </Badge>
+                        </Stack>
+                    </NavLink>
                     <DropDownLang/>
                 </div>
                 :

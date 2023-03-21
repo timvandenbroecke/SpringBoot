@@ -18,6 +18,8 @@ import RegisterStepper from "./components/stepper/RegisterStepper";
 import { connect } from 'react-redux'
 import {authenticateUser} from './redux/actions/index';
 import { AUTHENTICATE_USER_JWT } from "./redux/constants/action-types";
+import Cart from "./components/Cart";
+
 
 import "./sass/main.scss";
 
@@ -70,12 +72,16 @@ class App extends Component {
   render(){
 
     const {sideMenu, registerModal, loginModal, isAuthenticated} = this.state;
+    const {login} = this.props;
+
+
+
     return (
       <div className="App">
         <Header onHamburger={this.onHamburger}
                 onClickRegister={this.onClickRegister}
                 onClickLogin={this.onClickLogin}
-                isAuthenticated={isAuthenticated}
+                isAuthenticated={(isAuthenticated) || (login.token)}
         />
           <Routes>
             <Route exact path="/" element={<Main />} />
@@ -83,6 +89,7 @@ class App extends Component {
             <Route exact path="/jewelry" element={<Jewelry />} />
             <Route exact path="/clothes" element={<Clothes />} />
             <Route exact path="/kids" element={<Kids />} />
+            <Route exact path="/cart" element={<Cart/>}/>
             <Route path='*' element={<Main />}/>
           </Routes>
         <SideDrawer onHamburger={this.onHamburger} sideMenu={sideMenu} />
@@ -111,7 +118,8 @@ function mapStateToProps(state){
   messageAlert: state.alert.messageAlert,
   severityAlert: state.alert.severityAlert,
   token: state.login.token,
-  userAuthenticated: state.userAuthenticated
+  userAuthenticated: state.userAuthenticated,
+  login: state.login
  }}
  
  function mapDispatchToProps(dispatch) {
