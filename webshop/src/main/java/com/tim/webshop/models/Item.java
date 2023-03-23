@@ -2,6 +2,7 @@ package com.tim.webshop.models;
 
 import com.tim.webshop.models.enums.ItemTypeEmum;
 import jakarta.persistence.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.util.Objects;
 import java.util.Set;
@@ -36,6 +37,7 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private ItemTypeEmum itemTypeEmum;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "item")
     Set<Orders> orders;
 

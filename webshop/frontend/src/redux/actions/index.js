@@ -7,7 +7,8 @@ import { LOGIN_USER,
          ADD_BASKET,
          CHANGE_PAGINATION,
          GET_TOTAL_ITEMS,
-         EMAIL_EXISTS  } from "../constants/action-types";
+         EMAIL_EXISTS,
+           } from "../constants/action-types";
 
 import Axios from "../../axios/Axios";
 
@@ -158,5 +159,13 @@ export const userEmailExists = (email) => async dispatch =>{
 
   const promise = await axios.get("/api/user/emailexists/" + email);
   dispatch({type: EMAIL_EXISTS, payload: promise });
+
+}
+
+//********** Basket ************/
+
+export const addBasket = (basket) => dispatch => {
+  
+  dispatch({type: ADD_BASKET, payload: basket});
 
 }

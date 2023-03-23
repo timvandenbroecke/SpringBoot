@@ -1,4 +1,4 @@
-package com.tim.webshop.controller;
+package com.tim.webshop.models.controller;
 
 import com.tim.webshop.exception.DefaultExceptionMessage;
 import com.tim.webshop.models.dto.AuthToken;

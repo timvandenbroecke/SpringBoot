@@ -8,6 +8,7 @@ import pagination from './pagination';
 import totalitems from './totalitems';
 import get_user from './getUser';
 import email_exists from './emailExists';
+import basket from './basket';
 
 
 export default combineReducers({
@@ -19,5 +20,6 @@ export default combineReducers({
     pagination,
     totalitems,
     get_user,
-    email_exists
+    email_exists,
+    basket
 });

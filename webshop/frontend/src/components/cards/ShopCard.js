@@ -6,13 +6,19 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import {addBasket} from '../../redux/actions';
 
 export default function ShopCard({item}) {
 
   const { t, i18n } = useTranslation("common");
+  const dispatch = useDispatch();
+  const basket = useSelector(state => state.basket);
 
-  const Buy = () => {
-    console.log("Buy");
+
+  const Buy = (item) => {
+
+    dispatch(addBasket(item));
   }
 
   return (
@@ -40,7 +46,7 @@ export default function ShopCard({item}) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="medium" onClick={Buy}>{t("ADD_CART")}</Button>
+          <Button size="medium" onClick={() => Buy(item)}>{t("ADD_CART")}</Button>
         </CardActions>
       </Card>
     </div>
