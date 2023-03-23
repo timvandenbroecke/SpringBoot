@@ -8,6 +8,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from "react-router-dom";
 import Badge from '@mui/material/Badge';
 import { Stack } from "@mui/system";
+import { connect } from 'react-redux'
+import { compose } from 'redux';
 
 
 
@@ -24,7 +26,10 @@ class Header extends Component {
 
     render(){
 
-        const {isAuthenticated} = this.props;
+        const {isAuthenticated, basket} = this.props;
+
+        const basketNumber = basket.length;
+        console.log(basketNumber);
 
         return(
             <div className="header">
@@ -55,7 +60,7 @@ class Header extends Component {
                 <div className="login">
                     <NavLink to="/cart">
                         <Stack spacing={2} direction="row" >
-                            <Badge badgeContent={4} color="success" className="badge">
+                            <Badge badgeContent={basketNumber} color="success" className="badge">
                                 <ShoppingCartIcon className="cart"/>
                             </Badge>
                         </Stack>
@@ -79,4 +84,19 @@ class Header extends Component {
 
 }
 
-export default  withTranslation('common')(Header)
+function mapStateToProps(state){
+
+    return {
+        basket: state.basket
+   }}
+   
+   function mapDispatchToProps(dispatch) {
+    return { 
+    
+      dispatch
+    }
+  }
+   
+
+
+export default compose(withTranslation('common'), connect(mapStateToProps, mapDispatchToProps))(Header);
