@@ -35,5 +35,6 @@
     "LAST_NAME": "Nom de famille",
     "SUBMIT": "Soumettre",
     "ADD_CART": "Ajouter au panier",
-    "CART": "Panier"
+    "CART": "Panier",
+    "IN_STOCK": "En stock: "
 }

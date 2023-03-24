@@ -33,5 +33,7 @@
     "LAST_NAME": "杨 ",
     "SUBMIT": "提交",
     "ADD_CART": "添加到购物车",
-    "CART": "大车"
+    "CART": "大车",
+    "IN_STOCK": "库存: "
+
 }

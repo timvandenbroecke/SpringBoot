@@ -35,5 +35,7 @@
     "LAST_NAME": "Achternaam",
     "SUBMIT": "Opslaan",
     "ADD_CART": "Toevoegen aan mand",
-    "CART": "Mand"
+    "CART": "Mand",
+    "IN_STOCK": "In voorraad: "
+
 }

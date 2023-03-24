@@ -36,5 +36,6 @@
     "LAST_NAME": "Last name",
     "SUBMIT": "Submit",
     "ADD_CART": "Add to cart",
-    "CART": "Cart"
+    "CART": "Cart",
+    "IN_STOCK": "In stock: "
 }
