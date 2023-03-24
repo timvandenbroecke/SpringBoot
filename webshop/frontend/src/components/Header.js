@@ -24,12 +24,13 @@ class Header extends Component {
 
     }
 
+ 
+
     render(){
 
-        const {isAuthenticated, basket} = this.props;
+        const {isAuthenticated, basket, cartLength} = this.props;
 
         const basketNumber = basket.length;
-        console.log(basketNumber);
 
         return(
             <div className="header">
@@ -60,7 +61,7 @@ class Header extends Component {
                 <div className="login">
                     <NavLink to="/cart">
                         <Stack spacing={2} direction="row" >
-                            <Badge badgeContent={basketNumber} color="success" className="badge">
+                            <Badge badgeContent={cartLength} color="success" className="badge">
                                 <ShoppingCartIcon className="cart"/>
                             </Badge>
                         </Stack>

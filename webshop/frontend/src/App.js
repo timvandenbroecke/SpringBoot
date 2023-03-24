@@ -19,6 +19,7 @@ import { connect } from 'react-redux'
 import {authenticateUser} from './redux/actions/index';
 import { AUTHENTICATE_USER_JWT } from "./redux/constants/action-types";
 import Cart from "./components/Cart";
+import {deleteBasket} from './redux/actions';
 
 
 import "./sass/main.scss";
@@ -37,6 +38,27 @@ class App extends Component {
     }
   }
 
+  
+  shouldComponentUpdate(nextProps, nextState){
+
+    console.log("Next props: ", nextProps.basket.length)
+    console.log("This props: ", this.props.basket.length)
+
+
+    if(nextProps.basket !== this.props.basket){
+
+        console.log("TRUE")
+        return true;
+    }
+    if(nextState.isAuthenticated !== this.state.isAuthenticated){
+      console.log("TRUE")
+      return true;
+  }
+
+
+    return false;
+}
+
   async componentDidMount(){
 
     if(localStorage.getItem("token")){
@@ -47,6 +69,16 @@ class App extends Component {
         }
       }
   }
+
+  delete_Basket = (index) => {
+
+    let array = this.props.basket;
+
+    array.splice(index, 1)
+   this.props.dispatch(deleteBasket(array));
+   this.forceUpdate();
+}
+
 
   onHamburger = () => {
     this.setState({sideMenu: !this.state.sideMenu});
@@ -82,6 +114,7 @@ class App extends Component {
                 onClickRegister={this.onClickRegister}
                 onClickLogin={this.onClickLogin}
                 isAuthenticated={(isAuthenticated) || (login.token)}
+                cartLength={this.props.basket.length}
         />
           <Routes>
             <Route exact path="/" element={<Main />} />
@@ -89,7 +122,7 @@ class App extends Component {
             <Route exact path="/jewelry" element={<Jewelry />} />
             <Route exact path="/clothes" element={<Clothes />} />
             <Route exact path="/kids" element={<Kids />} />
-            <Route exact path="/cart" element={<Cart/>}/>
+            <Route exact path="/cart" element={<Cart delete_Basket={this.delete_Basket}/>}/>
             <Route path='*' element={<Main />}/>
           </Routes>
         <SideDrawer onHamburger={this.onHamburger} sideMenu={sideMenu} />
@@ -112,8 +145,8 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-  console.log(state);
   return {
+  basket: state.basket,
   openAlert: state.alert.openAlert,
   messageAlert: state.alert.messageAlert,
   severityAlert: state.alert.severityAlert,

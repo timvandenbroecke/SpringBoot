@@ -5,6 +5,7 @@ import { LOGIN_USER,
          AUTHENTICATE_USER_JWT, 
          GET_ITEMS, 
          ADD_BASKET,
+         DELETE_BASKET,
          CHANGE_PAGINATION,
          GET_TOTAL_ITEMS,
          EMAIL_EXISTS,
@@ -85,7 +86,6 @@ export const authenticateUser = (token) => async dispatch => {
 
 //  Alert
 export const alert = (data) => dispatch => {
-  const axios = new Axios(dispatch);
 
    dispatch({type: ALERT, payload: data});
 
@@ -167,5 +167,11 @@ export const userEmailExists = (email) => async dispatch =>{
 export const addBasket = (basket) => dispatch => {
   
   dispatch({type: ADD_BASKET, payload: basket});
+
+}
+
+export const deleteBasket = (basket) => dispatch => {
+  
+  dispatch({type: DELETE_BASKET, payload: basket});
 
 }

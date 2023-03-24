@@ -42,7 +42,7 @@ class Watches extends Component {
 
 
 function mapStateToProps(state){
-    console.log(state);
+
 
     const store = state.store.items;
     const total_items = state.store.total_items;
