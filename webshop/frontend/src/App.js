@@ -41,17 +41,13 @@ class App extends Component {
   
   shouldComponentUpdate(nextProps, nextState){
 
-    console.log("Next props: ", nextProps.basket.length)
-    console.log("This props: ", this.props.basket.length)
-
 
     if(nextProps.basket !== this.props.basket){
 
-        console.log("TRUE")
         return true;
     }
     if(nextState.isAuthenticated !== this.state.isAuthenticated){
-      console.log("TRUE")
+
       return true;
   }
 

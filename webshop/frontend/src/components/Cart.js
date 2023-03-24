@@ -27,7 +27,7 @@ class Cart extends Component {
 
     render(){
         const {basket} = this.props;
-        console.log(basket);
+
         return(
             <div className="cart-container">
                 <Paper elevation={3} className="cart">
@@ -61,7 +61,7 @@ class Cart extends Component {
 }
 
 function mapStateToProps(state){
-    console.log(state)
+
     return {
         basket: state.basket
    }}
