@@ -11,6 +11,11 @@
 
     .card {
         transition: transform .25s, visibility .25s ease-in;
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 }
 

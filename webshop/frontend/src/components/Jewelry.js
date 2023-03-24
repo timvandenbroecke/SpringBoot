@@ -1,32 +1,70 @@
 import React, {Component} from "react";
 import Grid from '@mui/material/Grid';
-
+import ShopView from "./ShopView";
+import {getItemsByPagination, changePaginationParams, getTotalItems} from '../redux/actions';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import {JEWELRY} from '../constants/ItemConstants';
 
 class Jewelry extends Component {
+    constructor(){
+        super();
 
+
+    }
+
+    componentDidMount(){
+
+        this.props.getItemsByPagination(0, this.props.pagination.total || 10, "id", JEWELRY);
+       // this.props.changePaginationParams(0, 10, 10, WATCH);
+    }
+
+    Prev = () => {
+
+    }
+
+    Next = () => {
+
+    }
 
     render(){
 
-        return (
-            <div>
-                <h1>Jewelry</h1>
-                <Grid container >
-                    <Grid item xs={6} md={8}>
-                        <h1>Item</h1>
-                    </Grid>
-                    <Grid item xs={6} md={4}>
-                        <h1>Item</h1>
-                    </Grid>
-                    <Grid item xs={6} md={4}>
-                        <h1>Item</h1>
-                    </Grid>
-                    <Grid item xs={6} md={8}>
-                        <h1>Item</h1>
-                    </Grid>
-                </Grid>
+       const {store, total_items} = this.props; 
+  
+        return(
+            <div className="shop-view">                
+             <ShopView store={store || []} total_items={total_items} type={JEWELRY}/>
             </div>
         );
     }
+
 }
 
-export default Jewelry
+
+function mapStateToProps(state){
+
+
+    const store = state.store.items;
+    const total_items = state.store.total_items;
+
+    return {
+    
+    store: store,
+    total_items: total_items,
+    pagination: state.pagination,
+    totalitems: state.totalitems || 0
+    
+   }}
+   
+function mapDispatchToProps(dispatch) {
+return { 
+    dispatch,
+    ...bindActionCreators({ getItemsByPagination, 
+                            changePaginationParams,
+                            getTotalItems},
+                            dispatch
+                        ),
+
+}}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Jewelry)

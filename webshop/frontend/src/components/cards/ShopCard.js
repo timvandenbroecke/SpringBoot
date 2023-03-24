@@ -45,8 +45,11 @@ export default function ShopCard({item}) {
             {item.description}
           </Typography>
         </CardContent>
-        <CardActions>
+        <CardActions className='button-container'>
           <Button size="medium" onClick={() => Buy(item)}>{t("ADD_CART")}</Button>
+          <Typography  gutterBottom variant="h5" component="div">
+            {"In stock: " + item.quantity}
+          </Typography>
         </CardActions>
       </Card>
     </div>

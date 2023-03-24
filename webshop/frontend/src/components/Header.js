@@ -51,7 +51,6 @@ class Header extends Component {
                     <NavLink to="/watches">{this.props.t('HEADER_WATCH')}</NavLink>
                     <NavLink to="/jewelry">{this.props.t('HEADER_JEWELRY')}</NavLink>
                     <NavLink to="/clothes"><p>{this.props.t('HEADER_CLOTHES')}</p></NavLink>
-                    <NavLink to="/kids"><p>{this.props.t('HEADER_KIDS')}</p></NavLink>
                 </div>
                 <div className="header-title">
                     <h2>ＷΞＢＳＨ♢Ｐ</h2>

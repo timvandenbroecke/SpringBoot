@@ -11,7 +11,6 @@ import Header from "./components/Header";
 import Watches from "./components/Watches";
 import Jewelry from "./components/Jewelry";
 import Clothes from "./components/Clothes";
-import Kids from "./components/Kids";
 import Login from "./components/Login";
 import AlertSnack from "./components/alert/AlertSnack";
 import RegisterStepper from "./components/stepper/RegisterStepper";
@@ -41,6 +40,20 @@ class App extends Component {
   
   shouldComponentUpdate(nextProps, nextState){
 
+    
+    if(nextState.sideMenu !== this.state.sideMenu){
+
+      return true;
+    }
+    
+    if(nextState.registerModal !== this.state.registerModal){
+
+      return true;
+    }
+    if(nextState.loginModal !== this.state.loginModal){
+
+      return true;
+    }
 
     if(nextProps.basket !== this.props.basket){
 
@@ -117,7 +130,6 @@ class App extends Component {
             <Route exact path="/watches" element={<Watches />} />
             <Route exact path="/jewelry" element={<Jewelry />} />
             <Route exact path="/clothes" element={<Clothes />} />
-            <Route exact path="/kids" element={<Kids />} />
             <Route exact path="/cart" element={<Cart delete_Basket={this.delete_Basket}/>}/>
             <Route path='*' element={<Main />}/>
           </Routes>
