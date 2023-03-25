@@ -9,6 +9,7 @@ import { LOGIN_USER,
          CHANGE_PAGINATION,
          GET_TOTAL_ITEMS,
          EMAIL_EXISTS,
+         ORDER
            } from "../constants/action-types";
 
 import Axios from "../../axios/Axios";
@@ -161,6 +162,45 @@ export const userEmailExists = (email) => async dispatch =>{
   dispatch({type: EMAIL_EXISTS, payload: promise });
 
 }
+
+// Order items
+export const order = (order, user_id) => async dispatch => {
+  const axios = new Axios(dispatch);
+
+  let formattedOrder = [];
+
+  const promise = await axios.post("/api/store/order", order);
+
+  order.forEach(orderEll => {
+    let element = {
+      user_id: user_id,
+      item_id: orderEll.id,
+      item_quantity: 1
+    }
+
+    formattedOrder.forEach(ell => {
+      if( ell.item_id === orderEll.id){
+        ell.item_quantity += 1;
+      }
+    });
+
+    let isEqual = false;
+    formattedOrder.forEach(ell => {
+      if( ell.item_id === orderEll.id) isEqual = true;
+      
+    });
+
+    if(!isEqual){
+      formattedOrder.push(element)
+    }
+    
+  });
+
+
+  dispatch({type: ORDER, payload: promise});
+
+}
+
 
 //********** Basket ************/
 

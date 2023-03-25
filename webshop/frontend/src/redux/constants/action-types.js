@@ -9,5 +9,6 @@ export const DELETE_BASKET= "DELETE_BASKET";
 export const CHANGE_PAGINATION =  "CHANGE_PAGINATION";
 export const GET_TOTAL_ITEMS = "GET_TOTAL_ITEMS";
 export const EMAIL_EXISTS = "EMAIL_EXISTS";
+export const ORDER = "ORDER";
 
 

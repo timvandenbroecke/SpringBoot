@@ -1,9 +1,12 @@
 package com.tim.webshop.repository;
 
+import com.tim.webshop.models.Item;
 import com.tim.webshop.models.Orders;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -13,9 +16,14 @@ import java.util.Set;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Orders, Long> {
-
+    //@Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query(value = "INSERT INTO Order (:user_id, :item_id)", nativeQuery = true)
     void saveOrder(@Param("user_id") Long user_id, @Param("item_id") Long item_id);
+
+    @Lock(LockModeType.PESSIMISTIC_READ)
+    @Query(value = "SELECT * FROM Item i WHERE i.id == :item_id", nativeQuery = true)
+    Item readItemById(@Param("item_id") Long item_id);
+
 
     @Query(value = "SELECT * FROM Orders o WHERE o.user_id", nativeQuery = true)
     Set<Orders> getAllOrdersByUserId(@Param("user_id") Long user_id);

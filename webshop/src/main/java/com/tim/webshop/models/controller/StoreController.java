@@ -31,8 +31,9 @@ public class StoreController {
         this.itemService = itemService;
     }
 
-    @RequestMapping(value = "/add_basket", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> addBasket(@RequestBody Set<OrdersDto> ordersDto){
+    @RequestMapping(value = "/order", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> orderTransaction(@RequestBody Set<OrdersDto> ordersDto){
+
         try {
             orderService.putOrder(ordersDto);
 
@@ -43,6 +44,7 @@ public class StoreController {
 
         return ResponseEntity.ok(ordersDto);
     }
+
 
 
     @RequestMapping(value = "/get_items", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)

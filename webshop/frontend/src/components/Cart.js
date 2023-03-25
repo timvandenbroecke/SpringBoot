@@ -9,8 +9,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-import {deleteBasket} from '../redux/actions'
+import {deleteBasket, order} from '../redux/actions'
 import basket from "../redux/reducers/basket";
+import Button from '@mui/material/Button';
 
 class Cart extends Component {
 
@@ -22,6 +23,10 @@ class Cart extends Component {
             loginModal: false,
             isAuthenticated: false
         }
+    }
+
+    order = () => {
+        this.props.dispatch(order(this.props.basket, 0));
     }
 
 
@@ -54,6 +59,7 @@ class Cart extends Component {
                     )
                   
                 })}
+                <Button onClick={() => this.order()}>Buy</Button>
                 </Paper>
             </div>
         );
@@ -61,7 +67,7 @@ class Cart extends Component {
 }
 
 function mapStateToProps(state){
-
+    console.log(state)
     return {
         basket: state.basket
    }}

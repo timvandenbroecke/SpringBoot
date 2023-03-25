@@ -42,6 +42,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.GET, "/h2-ui/**", "/login", "/login/**", "/pages/login/**", "/error", "/**", "/watches", "/api/security/getuser/*").permitAll()
                 .requestMatchers( "/h2-ui/**", "/login", "/login/**", "/pages/login/**", "/error").permitAll()
                 .requestMatchers(HttpMethod.GET, "/**").anonymous()
+                .requestMatchers(HttpMethod.POST, "/api/store/order").hasAnyRole("ROLE_USER", "ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic().authenticationEntryPoint(new NoPopupBasicAuthenticationEntryPoint())

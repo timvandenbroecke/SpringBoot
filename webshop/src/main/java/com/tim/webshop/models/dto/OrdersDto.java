@@ -10,6 +10,9 @@ public class OrdersDto {
     @JsonProperty(value = "item_id")
     private Long item_id;
 
+    @JsonProperty(value = "item_quantity")
+    private Integer item_quantity;
+
     public Long getUser_id() {
         return user_id;
     }
@@ -24,5 +27,13 @@ public class OrdersDto {
 
     public void setItem_id(Long item_id) {
         this.item_id = item_id;
+    }
+
+    public Integer getItem_quantity() {
+        return item_quantity;
+    }
+
+    public void setItem_quantity(Integer item_quantity) {
+        this.item_quantity = item_quantity;
     }
 }

@@ -4,6 +4,8 @@ import com.tim.webshop.models.Item;
 import com.tim.webshop.models.Orders;
 import com.tim.webshop.models.dto.OrdersDto;
 import com.tim.webshop.repository.OrderRepository;
+import jakarta.persistence.LockModeType;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
 
 
@@ -21,11 +23,9 @@ public class OrderServiceImpl implements OrderService {
     // put order
     public void putOrder(Set<OrdersDto> ordersDtoSet){
 
-        //@Lock(LockModeType.PESSIMISTIC_WRITE)
-        ordersDtoSet.forEach(order -> {
-            orderRepository.saveOrder(order.getUser_id(), order.getItem_id());
-        });
 
+
+        ordersDtoSet.forEach(order -> {orderRepository.saveOrder(order.getUser_id(), order.getItem_id());});
     }
 
     //  Get all orders by user id
