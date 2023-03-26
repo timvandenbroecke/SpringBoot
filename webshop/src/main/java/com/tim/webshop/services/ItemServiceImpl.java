@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Lock;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,4 +44,15 @@ public class ItemServiceImpl implements ItemService {
     public Integer getItemsTotal(String type){
         return itemRepository.getTotalByType(type);
     }
+
+    public Integer getQuantityByItemId(Long item_id){
+
+        return itemRepository.getQuantityByItemId(item_id);
+    }
+
+    public void updateItemQuantity(Long item_id, Integer quantity){
+
+       itemRepository.updateItemQuantity(item_id, quantity);
+    }
+
 }

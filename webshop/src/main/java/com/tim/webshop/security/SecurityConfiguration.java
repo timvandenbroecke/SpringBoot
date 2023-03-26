@@ -64,8 +64,8 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.POST, "/api/store/order").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                //.httpBasic().authenticationEntryPoint(new NoPopupBasicAuthenticationEntryPoint())
-                //.and()
+                .httpBasic().authenticationEntryPoint(new NoPopupBasicAuthenticationEntryPoint())
+                .and()
                 .authenticationManager(authenticationManager)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

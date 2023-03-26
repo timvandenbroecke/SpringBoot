@@ -16,7 +16,8 @@ import java.util.Set;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Orders, Long> {
-    //@Lock(LockModeType.PESSIMISTIC_WRITE)
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query(value = "INSERT INTO Order (:user_id, :item_id)", nativeQuery = true)
     void saveOrder(@Param("user_id") Long user_id, @Param("item_id") Long item_id);
 
