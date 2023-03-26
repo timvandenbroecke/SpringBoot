@@ -80,6 +80,7 @@ export const authenticateUser = (token) => async dispatch => {
   const axios = new Axios(dispatch);
 
   const promise = await axios.get("/api/security/getuser/" + token);
+  console.log("promise: ", promise)
 
   return dispatch({type: AUTHENTICATE_USER_JWT, payload: promise});
 

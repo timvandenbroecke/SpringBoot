@@ -30,4 +30,9 @@ public class DefaultController {
         return "";
     }
 
+    @RequestMapping("/cart")
+    public String getCart(){
+
+        return "";
+    }
 }

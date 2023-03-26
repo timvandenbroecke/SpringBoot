@@ -8,6 +8,7 @@ export const LOGIN_EXCEPTION  = "LOGIN_EXCEPTION";
 export const TRANSACTIONAL_EXCEPTION = "TRANSACTIONAL_EXCEPTION"; 
 export const REGISTER_EXCEPTION = "REGISTER_EXCEPTION";
 export const BAD_REQUEST = "BAD_REQUEST";
+export const ERR_BAD_RESPONSE = "ERR_BAD_RESPONSE"
 
 export const SEVERITY_ERROR   = "error";
 export const SEVERITY_WARNING = "warning";

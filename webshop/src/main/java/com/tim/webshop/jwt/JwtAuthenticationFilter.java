@@ -54,13 +54,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             logger.warn("Couldn't find bearer string, header will be ignored");
         }
 
-        System.out.println(username);
+        System.out.println("doFilterInternal: " + username);
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
             if (jwtTokenUtil.validateToken(authToken, userDetails)) {
                 UsernamePasswordAuthenticationToken authentication = jwtTokenUtil.getAuthenticationToken(authToken, SecurityContextHolder.getContext().getAuthentication(), userDetails);
+                System.out.println("doFilterInternal auth: " + authentication.getAuthorities());
+
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(req));
                 logger.info("authenticated user " + username + ", setting security context");
                 SecurityContextHolder.getContext().setAuthentication(authentication);

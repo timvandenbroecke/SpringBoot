@@ -14,7 +14,8 @@ public class NoPopupBasicAuthenticationEntryPoint implements AuthenticationEntry
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, org.springframework.security.core.AuthenticationException authException) throws IOException, ServletException {
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+        System.out.println(authException.getMessage());
+        //response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
 
     }
 }

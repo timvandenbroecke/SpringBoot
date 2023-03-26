@@ -69,12 +69,14 @@ class App extends Component {
 }
 
   async componentDidMount(){
-
     if(localStorage.getItem("token")){
         const payload = await this.props.dispatch(authenticateUser(localStorage.getItem("token")));
 
         if(payload.payload.username){
           this.setState({isAuthenticated: true});
+        }else{
+          
+
         }
       }
   }
