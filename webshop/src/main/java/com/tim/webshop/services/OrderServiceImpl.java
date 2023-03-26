@@ -8,6 +8,8 @@ import com.tim.webshop.repository.OrderRepository;
 import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -27,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     // put order
+    @Transactional(propagation = Propagation.NOT_SUPPORTED, isolation = Isolation.SERIALIZABLE)
     public Set<OrderMessageDto> putOrder(Set<OrdersDto> ordersDtoSet){
 
         Set<OrderMessageDto> orderMessageDtos = new HashSet<>();
@@ -38,7 +41,8 @@ public class OrderServiceImpl implements OrderService {
 
                 item_quantity--;
 
-                if(item_quantity >= 1){
+                if(item_quantity >= 0){
+
                     itemService.updateItemQuantity(order.getItem_id(), item_quantity);
                     orderRepository.saveOrder(order.getUser_id(), order.getItem_id());
                     orderMessageDtos.add(new OrderMessageDto(true, order.getItem_id()));
@@ -51,6 +55,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     //  Get all orders by user id
+    @Transactional(readOnly = true)
     public Set<Orders> getAllOrdersByUserId(Long user_id){
 
         return orderRepository.getAllOrdersByUserId(user_id);
