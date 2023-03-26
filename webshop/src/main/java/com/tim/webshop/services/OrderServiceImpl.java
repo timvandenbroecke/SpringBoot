@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     // put order
-    @Transactional(propagation = Propagation.NOT_SUPPORTED, isolation = Isolation.SERIALIZABLE)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     public Set<OrderMessageDto> putOrder(Set<OrdersDto> ordersDtoSet){
 
         Set<OrderMessageDto> orderMessageDtos = new HashSet<>();
