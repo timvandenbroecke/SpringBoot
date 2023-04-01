@@ -26,7 +26,7 @@ class Cart extends Component {
     }
 
     order = () => {
-        this.props.dispatch(order(this.props.basket, 0));
+        this.props.dispatch(order(this.props.basket, 1));
     }
 
 

@@ -35,4 +35,12 @@ public class DefaultController {
 
         return "";
     }
+
+    @RequestMapping("/favicon.ico")
+    public String getFavicon(){
+
+        return "";
+    }
+
+
 }

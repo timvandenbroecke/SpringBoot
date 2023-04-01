@@ -29,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     // put order
-    @Transactional(propagation = Propagation.NOT_SUPPORTED, isolation = Isolation.SERIALIZABLE)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     public Set<OrderMessageDto> putOrder(Set<OrdersDto> ordersDtoSet){
 
         Set<OrderMessageDto> orderMessageDtos = new HashSet<>();
@@ -44,6 +44,7 @@ public class OrderServiceImpl implements OrderService {
                 if(item_quantity >= 0){
 
                     itemService.updateItemQuantity(order.getItem_id(), item_quantity);
+                    final Orders orders = new Orders();
                     orderRepository.saveOrder(order.getUser_id(), order.getItem_id());
                     orderMessageDtos.add(new OrderMessageDto(true, order.getItem_id()));
                 }else {

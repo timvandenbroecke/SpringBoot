@@ -1,5 +1,6 @@
 package com.tim.webshop.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -38,7 +39,7 @@ public class Users {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username", unique = true)
@@ -68,6 +69,7 @@ public class Users {
     @Column(name = "country")
     private String country;
 
+    @JsonBackReference("user-order")
     @OneToMany(mappedBy = "users")
     Set<Orders> orders;
 

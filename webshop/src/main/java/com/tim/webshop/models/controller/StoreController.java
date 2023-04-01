@@ -35,7 +35,7 @@ public class StoreController {
     public ResponseEntity<?> orderTransaction(@RequestBody Set<OrdersDto> ordersDto){
 
         try {
-            orderService.putOrder(ordersDto);
+            ResponseEntity.ok(orderService.putOrder(ordersDto));
 
         }catch (TransactionalException e){
             System.out.println("TRANSACTIONAL ERROR");

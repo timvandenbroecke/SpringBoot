@@ -1,5 +1,6 @@
 package com.tim.webshop.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tim.webshop.models.enums.ItemTypeEmum;
 import jakarta.persistence.*;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -15,7 +16,7 @@ public class Item {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name" , nullable = false)
@@ -37,7 +38,7 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private ItemTypeEmum itemTypeEmum;
 
-    @JsonIgnore
+    @JsonManagedReference("item-order")
     @OneToMany(mappedBy = "item")
     Set<Orders> orders;
 

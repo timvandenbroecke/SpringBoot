@@ -21,4 +21,5 @@ public interface ItemService {
     Integer getQuantityByItemId(Long item_id);
 
     void updateItemQuantity(Long item_id, Integer quantity);
+
 }

@@ -19,7 +19,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.security.web.session.SessionManagementFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
+import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
 
 import javax.naming.AuthenticationException;
 import java.io.IOException;
@@ -53,15 +57,17 @@ public class SecurityConfiguration {
         authenticationManagerBuilder.userDetailsService(userDetailsService);
         authenticationManager = authenticationManagerBuilder.build();
 
+
         http.csrf().disable().cors().and()
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico", "/*.css", "/*.gif", "/h2-ui/**", "/api/store/get_items_total/**", "/api/user/emailexists/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/index**", "/static/**", "/*.js", "/*.json", "/*.ico", "/*.css", "/*.gif", "/api/store/get_items_total/**", "/api/user/emailexists/**", "/*.html").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/store/get_items").permitAll()
                 .requestMatchers(HttpMethod.POST,"/api/security/login", "/api/security/register", "/api/security/authenticate").permitAll()
-                .requestMatchers(HttpMethod.GET, "/h2-ui/**", "/login", "/login/**", "/pages/login/**", "/error", "/**", "/watches", "/api/security/getuser/*").permitAll()
-                .requestMatchers( "/h2-ui/**", "/login", "/login/**", "/pages/login/**", "/error").permitAll()
+                .requestMatchers(HttpMethod.GET,  "/login", "/login/**", "/pages/login/**", "/error", "/**", "/watches", "/api/security/getuser/*").permitAll()
+                .requestMatchers( "/login", "/login/**", "/pages/login/**", "/error/**", "/").permitAll()
                 .requestMatchers(HttpMethod.GET, "/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/store/order").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic().authenticationEntryPoint(new NoPopupBasicAuthenticationEntryPoint())
@@ -69,8 +75,8 @@ public class SecurityConfiguration {
                 .authenticationManager(authenticationManager)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
         http.headers().frameOptions().disable();
+        http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

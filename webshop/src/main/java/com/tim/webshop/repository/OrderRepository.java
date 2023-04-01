@@ -7,6 +7,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -17,9 +18,9 @@ import java.util.Set;
 @Repository
 public interface OrderRepository extends JpaRepository<Orders, Long> {
 
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @Query(value = "INSERT INTO Order (:user_id, :item_id)", nativeQuery = true)
-    void saveOrder(@Param("user_id") Long user_id, @Param("item_id") Long item_id);
+    @Modifying
+    @Query(value = "INSERT INTO Orders (item_id, user_id) VALUES (:item, :user)", nativeQuery = true)
+    void saveOrder(@Param("user") Long user_id, @Param("item") Long item_id);
 
     @Lock(LockModeType.PESSIMISTIC_READ)
     @Query(value = "SELECT * FROM Item i WHERE i.id == :item_id", nativeQuery = true)
