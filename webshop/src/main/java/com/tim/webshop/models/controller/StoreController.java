@@ -3,12 +3,15 @@ package com.tim.webshop.models.controller;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tim.webshop.exception.DefaultExceptionMessage;
 import com.tim.webshop.models.Item;
+import com.tim.webshop.models.Users;
 import com.tim.webshop.models.dto.ItemPaginationDto;
 import com.tim.webshop.models.dto.OrdersDto;
 import com.tim.webshop.models.dto.PaginationDto;
 import com.tim.webshop.repository.ItemRepository;
+import com.tim.webshop.security.AuthenticationFacade;
 import com.tim.webshop.services.ItemService;
 import com.tim.webshop.services.OrderService;
+import com.tim.webshop.services.UserService;
 import jakarta.transaction.TransactionalException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,23 +29,31 @@ public class StoreController {
 
     private final ItemService itemService;
 
-    public StoreController(OrderService orderService, ItemService itemService) {
+    private final AuthenticationFacade authenticationFacade;
+
+    private final UserService userService;
+
+
+    public StoreController(OrderService orderService, ItemService itemService, AuthenticationFacade authenticationFacade, UserService userService) {
         this.orderService = orderService;
         this.itemService = itemService;
+        this.authenticationFacade = authenticationFacade;
+        this.userService = userService;
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> orderTransaction(@RequestBody Set<OrdersDto> ordersDto){
+        System.out.println("ORDER: ");
+
+        final Users user = userService.findByUsername(authenticationFacade.getAuthentication().getName());
 
         try {
-            ResponseEntity.ok(orderService.putOrder(ordersDto));
+            return ResponseEntity.ok(orderService.putOrder(ordersDto, user.getId()));
 
         }catch (TransactionalException e){
             System.out.println("TRANSACTIONAL ERROR");
             return new ResponseEntity<>(new DefaultExceptionMessage("TRANSACTIONAL_EXCEPTION"), HttpStatus.BAD_REQUEST);
         }
-
-        return ResponseEntity.ok(ordersDto);
     }
 
 

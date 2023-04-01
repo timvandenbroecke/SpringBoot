@@ -8,7 +8,7 @@ import java.util.Set;
 
 public interface OrderService {
 
-    Set<OrderMessageDto> putOrder(Set<OrdersDto> ordersDtoSet);
+    Set<OrderMessageDto> putOrder(Set<OrdersDto> ordersDtoSet, Long user_id);
 
     Set<Orders> getAllOrdersByUserId(Long user_id);
 

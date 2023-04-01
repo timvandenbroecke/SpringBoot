@@ -1,12 +1,11 @@
 package com.tim.webshop.services;
 
-import com.tim.webshop.models.Item;
+import com.tim.webshop.jwt.TokenProvider;
 import com.tim.webshop.models.Orders;
 import com.tim.webshop.models.dto.OrderMessageDto;
 import com.tim.webshop.models.dto.OrdersDto;
 import com.tim.webshop.repository.OrderRepository;
-import jakarta.persistence.LockModeType;
-import org.springframework.data.jpa.repository.Lock;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -23,14 +22,19 @@ public class OrderServiceImpl implements OrderService {
 
     private final  ItemService itemService;
 
-    public OrderServiceImpl(OrderRepository orderRepository, ItemService itemService) {
+    private final UserService userService;
+
+
+    public OrderServiceImpl(OrderRepository orderRepository, ItemService itemService, UserService userService) {
         this.orderRepository = orderRepository;
         this.itemService = itemService;
+        this.userService = userService;
     }
 
     // put order
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
-    public Set<OrderMessageDto> putOrder(Set<OrdersDto> ordersDtoSet){
+    public Set<OrderMessageDto> putOrder(Set<OrdersDto> ordersDtoSet, Long user_id){
+
 
         Set<OrderMessageDto> orderMessageDtos = new HashSet<>();
 
@@ -45,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
 
                     itemService.updateItemQuantity(order.getItem_id(), item_quantity);
                     final Orders orders = new Orders();
-                    orderRepository.saveOrder(order.getUser_id(), order.getItem_id());
+                    orderRepository.saveOrder(user_id, order.getItem_id());
                     orderMessageDtos.add(new OrderMessageDto(true, order.getItem_id()));
                 }else {
                     orderMessageDtos.add(new OrderMessageDto(false, order.getItem_id()));
