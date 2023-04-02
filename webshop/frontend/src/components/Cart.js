@@ -23,17 +23,21 @@ class Cart extends Component {
             sideMenu: false,
             registerModal: false,
             loginModal: false,
-            isAuthenticated: false
+            isAuthenticated: false,
+            isOrdered: false
         }
     }
 
     order = () => {
         this.props.dispatch(order(this.props.basket));
+        this.setState({isOrdered: true});
     }
 
 
     render(){
         const {basket, order} = this.props;
+        const {isOrdered} = this.state;
+
         let totalprice = 0;
         this.props.basket.forEach(element => {
             totalprice += element.price;
@@ -61,6 +65,7 @@ class Cart extends Component {
 
         return(
             <div className="cart-container">
+                {!isOrdered ?
                 <Paper elevation={3} className="cart">
                     
                 {basket.map((item, index) => {
@@ -94,9 +99,14 @@ class Cart extends Component {
               
                 </Paper>
 
+                :
+
+                null
+                }
+
                 { _order.map((item, index) => {
                     return (
-                        <Paper elevation={3} >
+                        <Paper elevation={3} key={index}>
                         <div style={{display: "flex"}} key={index}>
                             <ListItem className="cart-list"  component="div" disablePadding>
                                 <ListItemButton>
@@ -109,7 +119,7 @@ class Cart extends Component {
                                 </ListItemButton>
                             </ListItem>
                             <div>
-                                 {item.ordered ? <DoneIcon/> : <CloseIcon />}
+                                {item.ordered ? <DoneIcon/> : <DeleteIcon />}
 
                             </div>
                         </div>
