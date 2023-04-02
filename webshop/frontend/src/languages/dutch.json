@@ -36,6 +36,8 @@
     "SUBMIT": "Opslaan",
     "ADD_CART": "Toevoegen aan mand",
     "CART": "Mand",
-    "IN_STOCK": "In voorraad: "
+    "IN_STOCK": "In voorraad: ",
+    "TOTAL_PRICE": "Totaal prijs: ",
+    "BUY": "Kopen"
 
 }

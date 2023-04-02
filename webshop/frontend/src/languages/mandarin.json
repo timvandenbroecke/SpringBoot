@@ -34,6 +34,8 @@
     "SUBMIT": "提交",
     "ADD_CART": "添加到购物车",
     "CART": "大车",
-    "IN_STOCK": "库存: "
+    "IN_STOCK": "库存: ",
+    "TOTAL_PRICE": "总价: ",
+    "BUY": "买"
 
 }

@@ -36,5 +36,9 @@
     "SUBMIT": "Soumettre",
     "ADD_CART": "Ajouter au panier",
     "CART": "Panier",
-    "IN_STOCK": "En stock: "
+    "IN_STOCK": "En stock: ",
+    "TOTAL_PRICE": "Prix total: ",
+    "BUY": "Acheter"
+
+
 }

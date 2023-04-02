@@ -23,7 +23,14 @@
         }
     }
 
-
+    .checkout {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 2em;
+        h3 {
+            margin-right: 5em;
+        }
+    }
 }
 
 .delete-button {

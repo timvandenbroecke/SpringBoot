@@ -174,7 +174,6 @@ export const order = (order, user_id) => async dispatch => {
 
   order.forEach(orderEll => {
     let element = {
-      user_id: user_id,
       item_id: orderEll.id,
       item_quantity: 1
     }
@@ -198,6 +197,9 @@ export const order = (order, user_id) => async dispatch => {
   });
 
   const promise = await axios.post("/api/store/order", formattedOrder);
+
+  console.log("ORDER: ", promise);
+  dispatch({type: ORDER, payload: promise});
 
 }
 

@@ -9,6 +9,7 @@ import totalitems from './totalitems';
 import get_user from './getUser';
 import email_exists from './emailExists';
 import basket from './basket';
+import order from './order';
 
 
 export default combineReducers({
@@ -21,5 +22,6 @@ export default combineReducers({
     totalitems,
     get_user,
     email_exists,
-    basket
+    basket,
+    order
 });
