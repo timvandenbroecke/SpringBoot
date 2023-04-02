@@ -9,7 +9,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-import {deleteBasket, order} from '../redux/actions'
+import {deleteBasket, order, clearBasket} from '../redux/actions'
 import basket from "../redux/reducers/basket";
 import Button from '@mui/material/Button';
 import DoneIcon from '@mui/icons-material/Done';
@@ -37,29 +37,31 @@ class Cart extends Component {
     render(){
         const {basket, order} = this.props;
         const {isOrdered} = this.state;
+        let isBasket = false;
+
+        if(basket.length > 0){
+            isBasket = true;
+        }
 
         let totalprice = 0;
         this.props.basket.forEach(element => {
             totalprice += element.price;
         });
 
-        console.log(order);
-
         let _order = [];
         if(order.length > 0){
             order.forEach((el, index )=>{
 
-            const orderEll = {
+                const orderEll = {
 
-                id: basket[index].id, 
-                name: basket[index].name,
-                price: basket[index].price,
-                image: basket[index].image,
-                ordered: el.ordered
-            }
-            _order.push(orderEll);
-        });
-        console.log(_order);
+                    id: basket[index].id, 
+                    name: basket[index].name,
+                    price: basket[index].price,
+                    image: basket[index].image,
+                    ordered: el.ordered
+                }
+                _order.push(orderEll);
+            });
         }
 
 
@@ -83,6 +85,7 @@ class Cart extends Component {
                                 </div>
                                 </ListItemButton>
                             </ListItem>
+                            
                             <IconButton color="primary" component="label" className="delete-button" onClick={() => {this.props.delete_Basket(index);
                                                                                                                     this.forceUpdate();
                                                                                                                    }}>
@@ -93,7 +96,11 @@ class Cart extends Component {
                   
                 })}
                 <div className="checkout">
+                { isBasket ?
                     <Button onClick={() => this.order()}>{this.props.t('BUY')}</Button>
+                    :
+                    null
+                }
                     <h3>{this.props.t('TOTAL_PRICE') + totalprice + " €"}</h3>
                 </div>
               
@@ -115,7 +122,7 @@ class Cart extends Component {
         
                                     </div>
                                     <div className="list-icon">
-                                        {item.ordered ? <h2 class>{this.props.t('ITEM_ORDER_SUCCESS')}</h2> : <h2>{this.props.t('ITEM_ORDER_FAIL')}</h2>}
+                                        {item.ordered ? <h2>{this.props.t('ITEM_ORDER_SUCCESS')}</h2> : <h2>{this.props.t('ITEM_ORDER_FAIL')}</h2>}
                                         {item.ordered ? <DoneIcon className="icon-success" /> : <CloseIcon className="icon-fail"/>}
                                     </div>
                                     </ListItemButton>
