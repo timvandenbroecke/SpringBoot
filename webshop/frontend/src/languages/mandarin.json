@@ -37,7 +37,7 @@
     "IN_STOCK": "库存: ",
     "TOTAL_PRICE": "总价: ",
     "BUY": "买",
-    "ITEM_ORDER_SUCCESS": "ITEM_ORDER_SUCCESS",
-    "ITEM_ORDER_FAIL": "ITEM_ORDER_SUCCESS"
+    "ITEM_ORDER_SUCCESS": "商品已成功订购",
+    "ITEM_ORDER_FAIL": "对不起，不再有货"
 
 }

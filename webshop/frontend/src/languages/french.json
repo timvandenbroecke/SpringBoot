@@ -38,7 +38,9 @@
     "CART": "Panier",
     "IN_STOCK": "En stock: ",
     "TOTAL_PRICE": "Prix total: ",
-    "BUY": "Acheter"
+    "BUY": "Acheter",
+    "ITEM_ORDER_SUCCESS": "l'article a été commandé avec succès",
+    "ITEM_ORDER_FAIL": "Désolé plus en stock"
 
 
 }
