@@ -31,6 +31,31 @@
             margin-right: 5em;
         }
     }
+
+    .list-icon {
+
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+
+       
+        
+      
+    }
+    .icon-success {
+        float: right;
+        width: 2em;
+        height: 2em;
+        color: green;
+        margin-left: 2em;
+    }
+    .icon-fail {
+        float: right;
+        width: 2em;
+        height: 2em;
+        color: red;
+        margin-left: 2em;
+    }
 }
 
 .delete-button {

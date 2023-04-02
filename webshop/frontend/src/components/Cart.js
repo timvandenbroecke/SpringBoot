@@ -100,33 +100,36 @@ class Cart extends Component {
                 </Paper>
 
                 :
-
-                null
-                }
-
-                { _order.map((item, index) => {
-                    return (
-                        <Paper elevation={3} key={index}>
-                        <div style={{display: "flex"}} key={index}>
-                            <ListItem className="cart-list"  component="div" disablePadding>
-                                <ListItemButton>
-                                <img src={item.image}/>
-                                <div className="list-container">
-                                    <ListItemText primary={`${item.name}`} />
-                                    <ListItemText primary={`Price: ${item.price} €`} />
-    
-                                </div>
-                                </ListItemButton>
-                            </ListItem>
-                            <div>
-                                {item.ordered ? <DoneIcon/> : <DeleteIcon />}
-
+                <div>
+                    <Paper elevation={3} >
+                    { _order.map((item, index) => {
+                        return (
+                            
+                            <div style={{display: "flex"}} key={index}>
+                                <ListItem className="cart-list"  component="div" disablePadding>
+                                    <ListItemButton>
+                                    <img src={item.image}/>
+                                    <div className="list-container">
+                                        <ListItemText primary={`${item.name}`} />
+                                        <ListItemText primary={`Price: ${item.price} €`} />
+        
+                                    </div>
+                                    <div className="list-icon">
+                                        {item.ordered ? <h2 class>{this.props.t('ITEM_ORDER_SUCCESS')}</h2> : <h2>{this.props.t('ITEM_ORDER_FAIL')}</h2>}
+                                        {item.ordered ? <DoneIcon className="icon-success" /> : <CloseIcon className="icon-fail"/>}
+                                    </div>
+                                    </ListItemButton>
+                                </ListItem>
                             </div>
-                        </div>
+                        
+                        );
+                    })
+                    }
                     </Paper>
-                    );
-                })
+                </div>
                 }
+
+               
 
             </div>
         );

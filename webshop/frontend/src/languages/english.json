@@ -39,7 +39,10 @@
     "CART": "Cart",
     "IN_STOCK": "In stock: ",
     "TOTAL_PRICE": "Total price: ",
-    "BUY": "Buy"
+    "BUY": "Buy",
+    "ITEM_ORDER_SUCCESS": "Item has been successfully ordered",
+    "ITEM_ORDER_FAIL": "Sorry no longer in stock"
+
 
 
 }

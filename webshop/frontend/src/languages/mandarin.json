@@ -36,6 +36,8 @@
     "CART": "大车",
     "IN_STOCK": "库存: ",
     "TOTAL_PRICE": "总价: ",
-    "BUY": "买"
+    "BUY": "买",
+    "ITEM_ORDER_SUCCESS": "ITEM_ORDER_SUCCESS",
+    "ITEM_ORDER_FAIL": "ITEM_ORDER_SUCCESS"
 
 }
