@@ -10,5 +10,6 @@ export const CHANGE_PAGINATION =  "CHANGE_PAGINATION";
 export const GET_TOTAL_ITEMS = "GET_TOTAL_ITEMS";
 export const EMAIL_EXISTS = "EMAIL_EXISTS";
 export const ORDER = "ORDER";
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
 
 

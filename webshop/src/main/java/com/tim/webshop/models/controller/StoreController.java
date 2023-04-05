@@ -97,7 +97,7 @@ public class StoreController {
         try {
             final Users user = userService.findByUsername(authenticationFacade.getAuthentication().getName());
 
-            ;
+
             return ResponseEntity.ok(itemService.getAllItemsFromOrdersByUserId(user.getId()));
 
 

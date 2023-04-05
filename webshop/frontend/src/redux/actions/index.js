@@ -9,7 +9,8 @@ import { LOGIN_USER,
          CHANGE_PAGINATION,
          GET_TOTAL_ITEMS,
          EMAIL_EXISTS,
-         ORDER
+         ORDER,
+         GET_ALL_ORDERS
            } from "../constants/action-types";
 
 import Axios from "../../axios/Axios";
@@ -80,7 +81,6 @@ export const authenticateUser = (token) => async dispatch => {
   const axios = new Axios(dispatch);
 
   const promise = await axios.get("/api/security/getuser/" + token);
-  console.log("promise: ", promise)
 
   return dispatch({type: AUTHENTICATE_USER_JWT, payload: promise});
 
@@ -224,3 +224,15 @@ export const clearBasket = () => dispatch => {
   dispatch({type: ADD_BASKET, payload: [{}]});
 
 }
+
+/********************************/
+
+
+export const getAllOrders = () => async dispatch =>{
+  const axios = new Axios(dispatch);
+
+  const promise = await axios.get("/api/store/get_orders");
+  dispatch({type: GET_ALL_ORDERS, payload: promise });
+
+}
+

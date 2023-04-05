@@ -60,10 +60,8 @@ class Header extends Component {
                 
                 <div className="login">
                      <NavLink to="/profile">
-                        <Stack spacing={2} direction="row" >
-                            <Badge badgeContent={cartLength} color="success" className="badge">
-                                <PersonIcon className="cart"/>
-                            </Badge>
+                        <Stack spacing={2} direction="row" style={{paddingRight: "2em"}} >
+                            <PersonIcon className="cart"/>
                         </Stack>
                     </NavLink>
                     <NavLink to="/cart">

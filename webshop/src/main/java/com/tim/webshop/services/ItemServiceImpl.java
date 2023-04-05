@@ -55,7 +55,7 @@ public class ItemServiceImpl implements ItemService {
        itemRepository.updateItemQuantity(item_id, quantity);
     }
 
-    public Set<Item> getAllItemsFromOrdersByUserId(Long user_id){
+    public List<Item> getAllItemsFromOrdersByUserId(Long user_id){
 
         return itemRepository.getAllItemsFromOrdersByUserId(user_id);
     }

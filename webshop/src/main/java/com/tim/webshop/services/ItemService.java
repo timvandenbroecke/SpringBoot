@@ -22,5 +22,5 @@ public interface ItemService {
 
     void updateItemQuantity(Long item_id, Integer quantity);
 
-    Set<Item> getAllItemsFromOrdersByUserId(Long user_id);
+    List<Item> getAllItemsFromOrdersByUserId(Long user_id);
 }
