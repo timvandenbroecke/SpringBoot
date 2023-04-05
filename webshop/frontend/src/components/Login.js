@@ -86,7 +86,7 @@ export default function Login({onCloseLogin}) {
 
               <TextValidator className='register-field'
                   fullWidth={true}
-                  label={t("USERNAME")}
+                  label={t("PASSWORD")}
                   onChange={(e) => handleOnPassword(e)}
                   name="password"
                   value={password || ""}

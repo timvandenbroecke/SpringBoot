@@ -40,6 +40,8 @@
     "TOTAL_PRICE": "Totaal prijs: ",
     "BUY": "Kopen",
     "ITEM_ORDER_SUCCESS": "Artikel is succesvol besteld",
-    "ITEM_ORDER_FAIL": "Onze verontschuldigingen artikel is niet in stock"
+    "ITEM_ORDER_FAIL": "Onze verontschuldigingen artikel is niet in stock",
+    "PROFILE": "Profiel",
+    "ORDERS": "Bestellingen"
 
 }

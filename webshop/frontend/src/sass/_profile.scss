@@ -1,0 +1,17 @@
+.profile-container {
+
+    .tab-1 {
+        display: flex;
+
+        .text-left {
+            width: auto;
+            text-align: right;
+        }
+
+        .text-right {
+            padding-left: 2em;
+            width: auto;
+            text-align: left;
+        }
+    }
+}

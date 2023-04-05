@@ -5,7 +5,6 @@ import {
 } from "react-router-dom";
 import SideDrawer from "./components/drawers/SideDrawer";
 import Modals from "./components/modals/Modals";
-
 import Main from "./components/Main";
 import Header from "./components/Header";
 import Watches from "./components/Watches";
@@ -14,6 +13,7 @@ import Clothes from "./components/Clothes";
 import Login from "./components/Login";
 import AlertSnack from "./components/alert/AlertSnack";
 import RegisterStepper from "./components/stepper/RegisterStepper";
+import Profile from "./components/Profile";
 import { connect } from 'react-redux'
 import {authenticateUser} from './redux/actions/index';
 import { AUTHENTICATE_USER_JWT } from "./redux/constants/action-types";
@@ -133,6 +133,7 @@ class App extends Component {
             <Route exact path="/jewelry" element={<Jewelry />} />
             <Route exact path="/clothes" element={<Clothes />} />
             <Route exact path="/cart" element={<Cart delete_Basket={this.delete_Basket}/>}/>
+            <Route exact path="/profile" element={<Profile />}  />
             <Route path='*' element={<Main />}/>
           </Routes>
         <SideDrawer onHamburger={this.onHamburger} sideMenu={sideMenu} />
@@ -155,6 +156,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
+
   return {
   basket: state.basket,
   openAlert: state.alert.openAlert,

@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PersonIcon from '@mui/icons-material/Person';
 import { Link } from "react-router-dom";
 import Badge from '@mui/material/Badge';
 import { Stack } from "@mui/system";
@@ -58,6 +59,13 @@ class Header extends Component {
                 {isAuthenticated ?
                 
                 <div className="login">
+                     <NavLink to="/profile">
+                        <Stack spacing={2} direction="row" >
+                            <Badge badgeContent={cartLength} color="success" className="badge">
+                                <PersonIcon className="cart"/>
+                            </Badge>
+                        </Stack>
+                    </NavLink>
                     <NavLink to="/cart">
                         <Stack spacing={2} direction="row" >
                             <Badge badgeContent={cartLength} color="success" className="badge">
