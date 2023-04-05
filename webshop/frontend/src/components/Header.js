@@ -54,7 +54,7 @@ class Header extends Component {
                     <NavLink to="/clothes"><p>{this.props.t('HEADER_CLOTHES')}</p></NavLink>
                 </div>
                 <div className="header-title">
-                    <h2>ＷΞＢＳＨ♢Ｐ</h2>
+                <NavLink to="/" style={{ cursor: "default",  textDecoration: "none", color: "black"}}><h2>ＷΞＢＳＨ♢Ｐ</h2></NavLink>
                 </div>
                 {isAuthenticated ?
                 
