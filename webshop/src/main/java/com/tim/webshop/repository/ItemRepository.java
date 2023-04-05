@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
@@ -36,7 +37,8 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query(value = "UPDATE Item SET quantity = :quantity WHERE id = :item_id", nativeQuery = true)
     void updateItemQuantity(@Param("item_id") Long item_id, @Param("quantity") Integer quantity);
 
-
+    @Query(value = "SELECT i.* FROM Item i INNER JOIN Orders o on o.item_id = i.id WHERE o.user_id = :user_id", nativeQuery = true)
+    Set<Item> getAllItemsFromOrdersByUserId(@Param("user_id") Long user_id);
 
     @Override
     void flush();

@@ -43,7 +43,6 @@ public class StoreController {
 
     @RequestMapping(value = "/order", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> orderTransaction(@RequestBody Set<OrdersDto> ordersDto){
-        System.out.println("ORDER: ");
 
         final Users user = userService.findByUsername(authenticationFacade.getAuthentication().getName());
 
@@ -90,6 +89,20 @@ public class StoreController {
             System.out.println(e);
             return new ResponseEntity<>(new DefaultExceptionMessage("BAD_REQUEST"), HttpStatus.BAD_REQUEST);
 
+        }
+    }
+
+    @RequestMapping(value = "/get_orders", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllOrdersFromUserId(){
+        try {
+            final Users user = userService.findByUsername(authenticationFacade.getAuthentication().getName());
+
+            ;
+            return ResponseEntity.ok(itemService.getAllItemsFromOrdersByUserId(user.getId()));
+
+
+        }catch (Exception e){
+            return new ResponseEntity<>(new DefaultExceptionMessage("BAD_REQUEST"), HttpStatus.BAD_REQUEST);
         }
     }
 }
