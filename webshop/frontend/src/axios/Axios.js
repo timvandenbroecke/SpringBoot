@@ -59,6 +59,7 @@ class Axios {
                 this.errorCode = REGISTER_EXCEPTION;
                 this.errorSeverity = SEVERITY_ERROR;
             case ERR_BAD_RESPONSE:
+                this.errorCode = ERR_BAD_RESPONSE;
                 localStorage.removeItem("token");
             default:
             
@@ -79,7 +80,7 @@ class Axios {
                 this.errorMessage(error.response.data.message);
             }
 
-            this.dispatch(alert({openAlert: true, messageAlert: this.errorCode, severityAlert: this.errorSeverity}));
+            if(this.errorCode !== ERR_BAD_RESPONSE) this.dispatch(alert({openAlert: true, messageAlert: this.errorCode, severityAlert: this.errorSeverity}));
             console.log("Error: ", error);
         });
     }
@@ -94,7 +95,7 @@ class Axios {
          
             this.errorMessage(error.code);
 
-            this.dispatch(alert({openAlert: true, messageAlert: this.errorCode, severityAlert: this.errorSeverity}));
+            if(this.errorCode !== ERR_BAD_RESPONSE) this.dispatch(alert({openAlert: true, messageAlert: this.errorCode, severityAlert: this.errorSeverity}));
             console.log("Error: ", error);
         });
 
