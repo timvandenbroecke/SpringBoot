@@ -7,18 +7,27 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import {addBasket} from '../../redux/actions';
+import {addBasket, alert} from '../../redux/actions';
+import {SEVERITY_INFO, REGISTER_WARNING} from "../../constants/AlertConstants"
 
 export default function ShopCard({item}) {
 
   const { t, i18n } = useTranslation("common");
   const dispatch = useDispatch();
   const basket = useSelector(state => state.basket);
+  const token = useSelector(state => state.login.token);
+  const isAuthenticated = useSelector(state => state.isAuthenticated);
+
 
 
   const Buy = (item) => {
 
-    dispatch(addBasket(item));
+    if(token || isAuthenticated){
+      dispatch(addBasket(item));
+      return;
+    }
+
+    dispatch(alert({openAlert: true, messageAlert: REGISTER_WARNING, severityAlert: SEVERITY_INFO}));
   }
 
   return (

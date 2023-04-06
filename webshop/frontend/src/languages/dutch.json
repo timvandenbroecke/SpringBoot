@@ -42,6 +42,8 @@
     "ITEM_ORDER_SUCCESS": "Artikel is succesvol besteld",
     "ITEM_ORDER_FAIL": "Onze verontschuldigingen artikel is niet in stock",
     "PROFILE": "Profiel",
-    "ORDERS": "Bestellingen"
+    "ORDERS": "Bestellingen",
+    "REGISTER_WARNING": "Registreer eerst!"
+
 
 }

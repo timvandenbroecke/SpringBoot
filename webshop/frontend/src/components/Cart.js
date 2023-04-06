@@ -144,7 +144,7 @@ class Cart extends Component {
 }
 
 function mapStateToProps(state){
-    console.log(state)
+
     return {
         basket: state.basket,
         order: state.order

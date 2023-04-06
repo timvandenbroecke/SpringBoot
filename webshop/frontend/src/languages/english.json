@@ -43,7 +43,8 @@
     "ITEM_ORDER_SUCCESS": "Item has been successfully ordered",
     "ITEM_ORDER_FAIL": "Sorry no longer in stock",
     "PROFILE": "Profile",
-    "ORDERS": "Orders"
+    "ORDERS": "Orders",
+    "REGISTER_WARNING": "Register first!"
 
 
 
