@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {
   Routes, 
   Route,
+  Navigate
 } from "react-router-dom";
 import SideDrawer from "./components/drawers/SideDrawer";
 import Modals from "./components/modals/Modals";
@@ -19,9 +20,15 @@ import {authenticateUser} from './redux/actions/index';
 import { AUTHENTICATE_USER_JWT } from "./redux/constants/action-types";
 import Cart from "./components/Cart";
 import {deleteBasket} from './redux/actions';
-
-
 import "./sass/main.scss";
+
+
+function Protected({ isAuthenticated, children }) {
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />
+  }
+  return children
+}
 
 
 
@@ -132,8 +139,8 @@ class App extends Component {
             <Route exact path="/watches" element={<Watches />} />
             <Route exact path="/jewelry" element={<Jewelry />} />
             <Route exact path="/clothes" element={<Clothes />} />
-            <Route exact path="/cart" element={<Cart delete_Basket={this.delete_Basket}/>}/>
-            <Route exact path="/profile" element={<Profile />}  />
+            <Route exact path="/cart" element={<Protected isAuthenticated={isAuthenticated || login.token}><Cart delete_Basket={this.delete_Basket}/></Protected>}/>
+            <Route exact path="/profile" element={<Protected isAuthenticated={isAuthenticated || login.token} ><Profile /></Protected>}  />
             <Route path='*' element={<Main />}/>
           </Routes>
         <SideDrawer onHamburger={this.onHamburger} sideMenu={sideMenu} />
