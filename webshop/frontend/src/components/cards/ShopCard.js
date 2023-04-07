@@ -14,17 +14,23 @@ export default function ShopCard({item}) {
 
   const { t, i18n } = useTranslation("common");
   const dispatch = useDispatch();
-  const token = useSelector(state => state.login.token);
+  const token = useSelector(state => state.login);
   const isAuthenticated = useSelector(state => state.authenticateUser);
 
 
 
   const Buy = (item) => {
 
-    if(isAuthenticated || token){
+    console.log("isAuthenticated: ", isAuthenticated);
+    console.log("token: ", token);
+
+
+    if(isAuthenticated.username){
       dispatch(addBasket(item));
       return;
     }
+
+  
 
     dispatch(alert({openAlert: true, messageAlert: REGISTER_WARNING, severityAlert: SEVERITY_INFO}));
   }

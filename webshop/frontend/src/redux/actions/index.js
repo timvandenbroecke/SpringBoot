@@ -41,7 +41,13 @@ export const loginUser = (data) => async dispatch => {
   }
  
 
-  if(promise.token.length > 0) localStorage.setItem('token', promise.token)
+  if(promise.token.length > 0){
+    localStorage.setItem('token', promise.token);
+
+    const authPromise = await axios.get("/api/security/getuser/" + promise.token);
+
+    dispatch({type: AUTHENTICATE_USER_JWT, payload: authPromise});
+  }
 };
 
 // Register
