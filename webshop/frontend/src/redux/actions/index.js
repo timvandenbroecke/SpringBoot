@@ -200,6 +200,7 @@ export const order = (order, user_id) => async dispatch => {
 
   console.log("ORDER: ", promise);
   dispatch({type: ORDER, payload: promise});
+  dispatch({type: ADD_BASKET, payload: []});
   
 }
 
@@ -221,7 +222,7 @@ export const deleteBasket = (basket) => dispatch => {
 }
 
 export const clearBasket = () => dispatch => {
-  dispatch({type: ADD_BASKET, payload: [{}]});
+  dispatch({type: ADD_BASKET, payload: []});
 
 }
 
@@ -235,4 +236,6 @@ export const getAllOrders = () => async dispatch =>{
   dispatch({type: GET_ALL_ORDERS, payload: promise });
 
 }
+
+
 

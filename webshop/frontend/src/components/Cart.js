@@ -10,7 +10,6 @@ import ListItemText from '@mui/material/ListItemText';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import {deleteBasket, order, clearBasket} from '../redux/actions'
-import basket from "../redux/reducers/basket";
 import Button from '@mui/material/Button';
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
@@ -24,10 +23,15 @@ class Cart extends Component {
             registerModal: false,
             loginModal: false,
             isAuthenticated: false,
-            isOrdered: false
+            isOrdered: false,
         }
     }
 
+    componentDidMount(){
+    }
+    componentWillUnmount(){
+       if(this.state.isOrdered) this.props.clear_Basket();
+    }
     order = () => {
         this.props.dispatch(order(this.props.basket));
         this.setState({isOrdered: true});
@@ -39,8 +43,12 @@ class Cart extends Component {
         const {isOrdered} = this.state;
         let isBasket = false;
 
+        console.log("Basket: ",basket);
         if(basket.length > 0){
             isBasket = true;
+        }else {
+            isBasket = false;
+
         }
 
         let totalprice = 0;
@@ -49,9 +57,14 @@ class Cart extends Component {
         });
 
         let _order = [];
-        if(order.length > 0){
-            order.forEach((el, index )=>{
+        if(order.length > 0 && isOrdered){
 
+            order.forEach((el, index )=>{
+                
+                console.log(el, index)
+                console.log(basket[index], index)
+
+                
                 const orderEll = {
 
                     id: basket[index].id, 
@@ -62,12 +75,15 @@ class Cart extends Component {
                 }
                 _order.push(orderEll);
             });
+            
+            //this.props.clear_Basket();
+
         }
 
 
         return(
             <div className="cart-container">
-                {!isOrdered ?
+                {!isOrdered  ?
                 <Paper elevation={3} className="cart">
                     
                 {basket.map((item, index) => {
@@ -144,10 +160,10 @@ class Cart extends Component {
 }
 
 function mapStateToProps(state){
-
+    console.log("Props: ", state.basket);
     return {
-        basket: state.basket,
-        order: state.order
+        basket: state.basket || [],
+        order: state.order || []
    }}
    
    function mapDispatchToProps(dispatch) {

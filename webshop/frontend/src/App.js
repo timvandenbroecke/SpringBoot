@@ -88,6 +88,10 @@ class App extends Component {
       }
   }
 
+  clear_Basket = () => {
+    this.props.dispatch(deleteBasket([]));
+  }
+
   delete_Basket = (index) => {
 
     let array = this.props.basket;
@@ -139,7 +143,7 @@ class App extends Component {
             <Route exact path="/watches" element={<Watches />} />
             <Route exact path="/jewelry" element={<Jewelry />} />
             <Route exact path="/clothes" element={<Clothes />} />
-            <Route exact path="/cart" element={<Protected isAuthenticated={isAuthenticated || login.token}><Cart delete_Basket={this.delete_Basket}/></Protected>}/>
+            <Route exact path="/cart" element={<Protected isAuthenticated={isAuthenticated || login.token}><Cart delete_Basket={this.delete_Basket} clear_Basket={this.clear_Basket}/></Protected>}/>
             <Route exact path="/profile" element={<Protected isAuthenticated={isAuthenticated || login.token} ><Profile /></Protected>}  />
             <Route path='*' element={<Main />}/>
           </Routes>
