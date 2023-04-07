@@ -7,7 +7,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import {getAllOrders} from '../redux/actions'
+import {getAllOrders, authenticateUser} from '../redux/actions'
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
@@ -52,6 +52,7 @@ class Profile extends Component {
 
     componentDidMount(){
         this.props.dispatch(getAllOrders())
+        this.props.dispatch(authenticateUser(localStorage.getItem("token")));
     }
 
       handleChange = (event, newValue) => {

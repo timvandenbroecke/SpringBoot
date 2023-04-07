@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Grid from '@mui/material/Grid';
 import Carousel from "./carousel/Carousel";
 import Paper from '@mui/material/Paper';
+import Divider from '@mui/material/Divider';
 
 class Main extends Component {
     constructor(){
@@ -28,7 +29,9 @@ class Main extends Component {
                                 </div>           
                                 <div className="image">
                                     <img  src="https://images.unsplash.com/photo-1569397288884-4d43d6738fbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80" />
-                                </div>                 
+                                </div>               
+                            <Divider />
+
                             </Paper>
                         </div>
                     </Grid>
