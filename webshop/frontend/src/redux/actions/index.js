@@ -198,7 +198,6 @@ export const order = (order, user_id) => async dispatch => {
 
   const promise = await axios.post("/api/store/order", formattedOrder);
 
-  console.log("ORDER: ", promise);
   dispatch({type: ORDER, payload: promise});
   dispatch({type: ADD_BASKET, payload: []});
   

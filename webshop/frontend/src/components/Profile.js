@@ -32,7 +32,7 @@ function a11yProps(index) {
         {...other}
       >
         {value === index && (
-          <Box sx={{ p: 3 }}>
+          <Box>
             <Typography>{children}</Typography>
           </Box>
         )}
@@ -123,7 +123,7 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state){
-    console.log(state);
+    
     return {
         authenticateUser: state.authenticateUser,
         orders: state.getOrders || []

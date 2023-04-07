@@ -27,8 +27,20 @@ class Cart extends Component {
         }
     }
 
-    componentDidMount(){
+   
+    componentDidUpdate(nextProps, nextState){
+
+      if(this.state.sideMenu !== nextState.sideMenu) return true;
+      if(this.state.registerModal !== nextState.registerModal) return true;
+      if(this.state.loginModal !== nextState.loginModal) return true;
+      if(this.state.isAuthenticated !== nextState.isAuthenticated) return true;
+      if(this.state.isOrdered !== nextState.isOrdered) return true;
+
+      return false;
+
     }
+
+
     componentWillUnmount(){
        if(this.state.isOrdered) this.props.clear_Basket();
     }
@@ -57,7 +69,7 @@ class Cart extends Component {
         });
 
         let _order = [];
-        if(order.length > 0 && isOrdered){
+        if(order.length > 0 && isOrdered && basket.length > 0){
 
             order.forEach((el, index )=>{
                 
@@ -160,7 +172,7 @@ class Cart extends Component {
 }
 
 function mapStateToProps(state){
-    console.log("Props: ", state.basket);
+
     return {
         basket: state.basket || [],
         order: state.order || []
