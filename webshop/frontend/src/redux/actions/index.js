@@ -204,7 +204,11 @@ export const order = (order, user_id) => async dispatch => {
 }
 
 
+export const clear_order = () => dispatch => {
 
+  dispatch({type: ORDER, payload: []});
+
+}
 
 //********** Basket ************/
 

@@ -16,7 +16,7 @@ import AlertSnack from "./components/alert/AlertSnack";
 import RegisterStepper from "./components/stepper/RegisterStepper";
 import Profile from "./components/Profile";
 import { connect } from 'react-redux'
-import {authenticateUser} from './redux/actions/index';
+import {authenticateUser, clear_order} from './redux/actions/index';
 import { AUTHENTICATE_USER_JWT } from "./redux/constants/action-types";
 import Cart from "./components/Cart";
 import {deleteBasket} from './redux/actions';
@@ -62,14 +62,13 @@ class App extends Component {
       return true;
     }
 
-    if(nextProps.basket !== this.props.basket){
+    if(nextProps.basket !== this.props.basket) return true;
 
-        return true;
-    }
     if(nextState.isAuthenticated !== this.state.isAuthenticated){
 
       return true;
   }
+
 
 
     return false;
@@ -90,6 +89,9 @@ class App extends Component {
 
   clear_Basket = () => {
     this.props.dispatch(deleteBasket([]));
+    this.props.dispatch(clear_order())
+    this.forceUpdate();
+
   }
 
   delete_Basket = (index) => {
@@ -169,7 +171,8 @@ class App extends Component {
 function mapStateToProps(state){
 
   return {
-  basket: state.basket,
+  order: state.order || [],
+  basket: state.basket || [],
   openAlert: state.alert.openAlert,
   messageAlert: state.alert.messageAlert,
   severityAlert: state.alert.severityAlert,

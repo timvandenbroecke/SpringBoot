@@ -36,6 +36,9 @@ class Cart extends Component {
       if(this.state.isAuthenticated !== nextState.isAuthenticated) return true;
       if(this.state.isOrdered !== nextState.isOrdered) return true;
 
+      if(this.props.basket !== nextProps.basket) return true;
+      if(this.props.order !== nextProps.order) return true;
+
       return false;
 
     }
@@ -55,7 +58,6 @@ class Cart extends Component {
         const {isOrdered} = this.state;
         let isBasket = false;
 
-        console.log("Basket: ",basket);
         if(basket.length > 0){
             isBasket = true;
         }else {
@@ -69,13 +71,11 @@ class Cart extends Component {
         });
 
         let _order = [];
-        if(order.length > 0 && isOrdered && basket.length > 0){
-
+        
+        if(order.length > 0 && (isOrdered && basket.length > 0)){
+            console.log("basket: ", basket);
+            console.log("Order: ", order);
             order.forEach((el, index )=>{
-                
-                console.log(el, index)
-                console.log(basket[index], index)
-
                 
                 const orderEll = {
 
@@ -88,8 +88,6 @@ class Cart extends Component {
                 _order.push(orderEll);
             });
             
-            //this.props.clear_Basket();
-
         }
 
 
