@@ -23,3 +23,30 @@
 
     }
 }
+
+
+.paper-jewels {
+    padding: 2em;
+
+    div {
+        padding: 2em;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+
+    div div {
+        width: 50%;
+    }
+
+    .image {
+        width: 50%;
+    }
+    .image img {
+        width: 20em;
+        float: right;
+        margin-right: auto;
+
+    }
+}
