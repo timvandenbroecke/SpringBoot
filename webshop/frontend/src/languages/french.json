@@ -43,7 +43,9 @@
     "ITEM_ORDER_FAIL": "Désolé plus en stock",
     "PROFILE": "Profil",
     "ORDERS": "Ordres",
-    "REGISTER_WARNING": "Inscrivez-vous d'abord!"
+    "REGISTER_WARNING": "Inscrivez-vous d'abord!",
+    "NOTHING_ORDERED": "commandez d'abord un article"
+
 
 
 

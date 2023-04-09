@@ -127,7 +127,11 @@ class Cart extends Component {
                     :
                     null
                 }
-                    <h3>{this.props.t('TOTAL_PRICE') + totalprice + " €"}</h3>
+                   {isBasket ?
+                   <h3>{this.props.t('TOTAL_PRICE') + totalprice + " €"}</h3>
+                   :
+                   <h3>{this.props.t('NOTHING_ORDERED')}</h3>
+                   }
                 </div>
               
                 </Paper>

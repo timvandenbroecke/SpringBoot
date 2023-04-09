@@ -41,5 +41,6 @@
     "ITEM_ORDER_FAIL": "对不起，不再有货",
     "PROFILE": "轮廓",
     "ORDERS": "命令",
-    "REGISTER_WARNING": "先注册!"
+    "REGISTER_WARNING": "先注册!",
+    "NOTHING_ORDERED": "首先订购一件商品"
 }

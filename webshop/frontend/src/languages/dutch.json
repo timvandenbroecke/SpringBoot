@@ -43,7 +43,8 @@
     "ITEM_ORDER_FAIL": "Onze verontschuldigingen artikel is niet in stock",
     "PROFILE": "Profiel",
     "ORDERS": "Bestellingen",
-    "REGISTER_WARNING": "Registreer eerst!"
+    "REGISTER_WARNING": "Registreer eerst!",
+    "NOTHING_ORDERED": "Bestel eerst een artikel"
 
 
 }

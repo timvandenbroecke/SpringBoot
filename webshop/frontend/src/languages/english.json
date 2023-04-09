@@ -44,8 +44,7 @@
     "ITEM_ORDER_FAIL": "Sorry no longer in stock",
     "PROFILE": "Profile",
     "ORDERS": "Orders",
-    "REGISTER_WARNING": "Register first!"
-
-
+    "REGISTER_WARNING": "Register first!",
+    "NOTHING_ORDERED": "First order an item"
 
 }
