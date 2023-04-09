@@ -44,9 +44,7 @@
     "PROFILE": "Profil",
     "ORDERS": "Ordres",
     "REGISTER_WARNING": "Inscrivez-vous d'abord!",
-    "NOTHING_ORDERED": "commandez d'abord un article"
-
-
-
-
+    "NOTHING_ORDERED": "commandez d'abord un article",
+    "EDIT": "Modifier",
+    "UPDATED_USER_SUCCESS": "Mise à jour du profil réussie!"
 }

@@ -12,6 +12,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import ProfileEdit from "../components/ProfileEdit";
+import Modals from "../components/modals/Modals";
 
 function a11yProps(index) {
     return {
@@ -46,7 +49,8 @@ class Profile extends Component {
     constructor(){
         super();
         this.state = {
-            value: 0
+            value: 0,
+            editProfileModal: false,
         }
     }
 
@@ -59,9 +63,19 @@ class Profile extends Component {
         this.setState({value: newValue});
       };
 
+
+      onCloseEditProfile = () => {
+        this.setState({editProfileModal: false});
+      }
+    
+      onEditProfile = () => {
+        this.setState({editProfileModal: true});
+      }
+    
+
     render(){
 
-        const {value} = this.state;
+        const {value, editProfileModal} = this.state;
         const {t, authenticateUser, orders} = this.props;
 
         return (
@@ -78,6 +92,8 @@ class Profile extends Component {
                             <div className="tab-1">
                                 <div className="text-left">
                                     <h3>{t("USERNAME")}:</h3>
+                                    <h3>{t("FIRST_NAME")}:</h3>
+                                    <h3>{t("SUR_NAME")}:</h3>
                                     <h3>{t("ADDRESS")}:</h3>
                                     <h3>{t("CITY")}:</h3>
                                     <h3>{t("POSTCODE")}:</h3>
@@ -86,6 +102,8 @@ class Profile extends Component {
                                 </div>
                                 <div className="text-right">
                                     <h3>{authenticateUser.username}</h3>
+                                    <h3>{authenticateUser.firstname}</h3>
+                                    <h3>{authenticateUser.lastname}</h3>
                                     <h3>{authenticateUser.adress}</h3>
                                     <h3>{authenticateUser.city}</h3>
                                     <h3>{authenticateUser.postcode}</h3>
@@ -93,6 +111,7 @@ class Profile extends Component {
                                     <h3>{authenticateUser.country}</h3>
                                 </div>
                             </div>
+                            <Button variant="outlined" onClick={() => this.onEditProfile()}>{t("EDIT")}</Button>
                         </Paper>
                     </TabPanel>
                     <TabPanel value={value} index={1}>
@@ -116,6 +135,11 @@ class Profile extends Component {
                         </Paper>
                     </TabPanel>
                 </Box>
+                <Modals open={editProfileModal}
+                        onClose={this.onCloseEditProfile}
+                >
+                  <ProfileEdit onCloseEditProfile={this.onCloseEditProfile}/>
+                </Modals>
             </div>
         );
     }

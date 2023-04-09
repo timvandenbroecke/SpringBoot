@@ -66,7 +66,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.GET,  "/login", "/login/**", "/pages/login/**", "/error", "/**", "/watches", "/api/security/getuser/*").permitAll()
                 .requestMatchers( "/login", "/login/**", "/pages/login/**", "/error/**", "/").permitAll()
                 .requestMatchers(HttpMethod.GET, "/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/store/order").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/store/order", "/api/user/update_user").hasAnyRole("USER", "ADMIN")
                 .requestMatchers(HttpMethod.GET, "/api/store/get_orders").hasAnyRole("USER", "ADMIN")
                 .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
                 .anyRequest().authenticated()

@@ -1,0 +1,43 @@
+
+
+
+    
+
+    .edit-profile {
+    
+        margin: 0 auto;
+        width: 80%;
+        padding: 1rem;    
+    
+        .container {
+            padding: 2em;
+            height: 50rem;
+
+            overflow-x: hidden;
+            overflow-y: auto;
+    
+            div {
+                margin: 0 auto;
+                width: 100%;
+            }
+    
+            .textfield {
+                padding-bottom: 2em;
+            }
+        }
+    }
+
+
+
+    @media all and (min-width: 700px) {
+        
+        .edit-profile {
+            width: 60%;
+            .container {
+                div {
+                   
+                    width: 40rem;
+                }
+            }
+        }
+    }

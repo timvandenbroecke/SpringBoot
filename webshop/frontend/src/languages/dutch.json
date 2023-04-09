@@ -44,7 +44,8 @@
     "PROFILE": "Profiel",
     "ORDERS": "Bestellingen",
     "REGISTER_WARNING": "Registreer eerst!",
-    "NOTHING_ORDERED": "Bestel eerst een artikel"
-
+    "NOTHING_ORDERED": "Bestel eerst een artikel",
+    "EDIT": "Aanpassen",
+    "UPDATED_USER_SUCCESS": "Profiel succesvol aangepast!"
 
 }

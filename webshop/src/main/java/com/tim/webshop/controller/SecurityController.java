@@ -1,4 +1,4 @@
-package com.tim.webshop.models.controller;
+package com.tim.webshop.controller;
 import com.tim.webshop.exception.DefaultExceptionMessage;
 import com.tim.webshop.jwt.TokenProvider;
 import com.tim.webshop.models.Users;
@@ -102,22 +102,9 @@ public class SecurityController {
 
         } catch (Exception e){
 
-            System.out.println("REGISTER ERROR");
             return new ResponseEntity<>(new DefaultExceptionMessage("REGISTER_EXCEPTION"), HttpStatus.BAD_REQUEST);
         }
 
-    }
-
-    @RequestMapping(value="/userping", method = RequestMethod.GET)
-    public String userPing(){
-
-        return "Any User Can Read This";
-    }
-
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test(){
-
-        return "Super secret";
     }
 
 }

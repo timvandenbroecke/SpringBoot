@@ -99,9 +99,9 @@ class App extends Component {
     let array = this.props.basket;
 
     array.splice(index, 1)
-   this.props.dispatch(deleteBasket(array));
-   this.forceUpdate();
-}
+    this.props.dispatch(deleteBasket(array));
+    this.forceUpdate();
+  }
 
 
   onHamburger = () => {
@@ -125,6 +125,7 @@ class App extends Component {
   }
 
 
+
   render(){
 
     const {sideMenu, registerModal, loginModal, isAuthenticated} = this.state;
@@ -146,7 +147,7 @@ class App extends Component {
             <Route exact path="/jewelry" element={<Jewelry />} />
             <Route exact path="/clothes" element={<Clothes />} />
             <Route exact path="/cart" element={<Protected isAuthenticated={isAuthenticated || login.token}><Cart delete_Basket={this.delete_Basket} clear_Basket={this.clear_Basket}/></Protected>}/>
-            <Route exact path="/profile" element={<Protected isAuthenticated={isAuthenticated || login.token} ><Profile /></Protected>}  />
+            <Route exact path="/profile" element={<Protected isAuthenticated={isAuthenticated || login.token}  ><Profile /></Protected>}  />
             <Route path='*' element={<Main />}/>
           </Routes>
         <SideDrawer onHamburger={this.onHamburger} sideMenu={sideMenu} />
@@ -162,6 +163,7 @@ class App extends Component {
             onCloseLogin={this.onCloseLogin}
           />
         </Modals>
+
         <AlertSnack/>
       </div>
     );

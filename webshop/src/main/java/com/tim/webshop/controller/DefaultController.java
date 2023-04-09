@@ -1,4 +1,4 @@
-package com.tim.webshop.models.controller;
+package com.tim.webshop.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

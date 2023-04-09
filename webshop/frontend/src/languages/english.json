@@ -45,6 +45,7 @@
     "PROFILE": "Profile",
     "ORDERS": "Orders",
     "REGISTER_WARNING": "Register first!",
-    "NOTHING_ORDERED": "First order an item"
-
+    "NOTHING_ORDERED": "First order an item",
+    "EDIT": "Edit",
+    "UPDATED_USER_SUCCESS": "Profile got updated successfully!"
 }

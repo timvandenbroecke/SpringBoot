@@ -25,6 +25,17 @@ public class UserDto {
         this.country = country;
     }
 
+    public UserDto(String username, String firstname, String lastname, String postcode, String address, String city, String province, String country) {
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.postcode = postcode;
+        this.address = address;
+        this.city = city;
+        this.province = province;
+        this.country = country;
+    }
+
     public UserDto(String username, String password) {
         this.username = username;
         this.password = password;

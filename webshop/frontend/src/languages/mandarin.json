@@ -42,5 +42,8 @@
     "PROFILE": "轮廓",
     "ORDERS": "命令",
     "REGISTER_WARNING": "先注册!",
-    "NOTHING_ORDERED": "首先订购一件商品"
+    "NOTHING_ORDERED": "首先订购一件商品",
+    "EDIT": "编辑",
+    "UPDATED_USER_SUCCESS": "配置文件更新成功"
+
 }

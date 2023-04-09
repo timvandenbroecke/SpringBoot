@@ -10,12 +10,31 @@ import { LOGIN_USER,
          GET_TOTAL_ITEMS,
          EMAIL_EXISTS,
          ORDER,
-         GET_ALL_ORDERS
+         GET_ALL_ORDERS,
+         UPDATED_USER
            } from "../constants/action-types";
 
 import Axios from "../../axios/Axios";
 
 
+
+//  Update user
+export const updateUser = (data) => async dispatch => {
+
+  const axios = new Axios(dispatch);
+
+  const promise = await axios.post("/api/user/update_user", data);
+  dispatch({type: AUTHENTICATE_USER_JWT, payload: promise});
+
+  const updateAlert = {
+    openAlert: true,
+    messageAlert: "UPDATED_USER_SUCCESS",
+    severityAlert: "success"
+  };
+
+  dispatch({type: ALERT, payload: updateAlert});
+
+}
 
 
 

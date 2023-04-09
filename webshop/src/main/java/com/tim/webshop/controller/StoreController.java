@@ -1,4 +1,4 @@
-package com.tim.webshop.models.controller;
+package com.tim.webshop.controller;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tim.webshop.exception.DefaultExceptionMessage;
