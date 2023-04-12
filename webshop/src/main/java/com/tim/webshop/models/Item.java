@@ -4,12 +4,17 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tim.webshop.models.enums.ItemTypeEmum;
 import jakarta.persistence.*;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "Item")
+@EntityListeners(AuditingEntityListener.class)
 public class Item {
 
     public Item() {
@@ -41,6 +46,14 @@ public class Item {
     @JsonManagedReference("item-order")
     @OneToMany(mappedBy = "item")
     Set<Orders> orders;
+
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @CreatedDate
+    private Date createdDate;
+
+    @Column(name = "modified_date")
+    @LastModifiedDate
+    private Date modifiedDate;
 
     public Long getId() {
         return id;
@@ -104,6 +117,22 @@ public class Item {
 
     public void setOrders(Set<Orders> orders) {
         this.orders = orders;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
     @Override

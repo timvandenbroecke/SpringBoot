@@ -3,12 +3,17 @@ package com.tim.webshop.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
 @Table(name = "'Users'")
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Users {
 
     public Users() {
@@ -83,9 +88,17 @@ public class Users {
                     @JoinColumn(name = "ROLE_ID") })
     private Set<Role> roles;
 
-
     @OneToMany(mappedBy = "userId", targetEntity = Sales.class)
     private Set<Sales> sales;
+
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @CreatedDate
+    private Date createdDate;
+
+    @Column(name = "modified_date")
+    @LastModifiedDate
+    private Date modifiedDate;
+
 
     public Long getId() {
         return id;
@@ -189,5 +202,21 @@ public class Users {
 
     public void setSales(Set<Sales> sales) {
         this.sales = sales;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 }
