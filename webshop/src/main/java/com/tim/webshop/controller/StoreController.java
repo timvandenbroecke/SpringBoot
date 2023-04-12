@@ -9,6 +9,7 @@ import com.tim.webshop.models.dto.OrdersDto;
 import com.tim.webshop.models.dto.PaginationDto;
 import com.tim.webshop.repository.ItemRepository;
 import com.tim.webshop.security.AuthenticationFacade;
+import com.tim.webshop.services.CountryService;
 import com.tim.webshop.services.ItemService;
 import com.tim.webshop.services.OrderService;
 import com.tim.webshop.services.UserService;
@@ -33,12 +34,15 @@ public class StoreController {
 
     private final UserService userService;
 
+    private final CountryService countryService;
 
-    public StoreController(OrderService orderService, ItemService itemService, AuthenticationFacade authenticationFacade, UserService userService) {
+
+    public StoreController(OrderService orderService, ItemService itemService, AuthenticationFacade authenticationFacade, UserService userService, CountryService countryService) {
         this.orderService = orderService;
         this.itemService = itemService;
         this.authenticationFacade = authenticationFacade;
         this.userService = userService;
+        this.countryService = countryService;
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -100,6 +104,31 @@ public class StoreController {
 
             return ResponseEntity.ok(itemService.getAllItemsFromOrdersByUserId(user.getId()));
 
+
+        }catch (Exception e){
+            return new ResponseEntity<>(new DefaultExceptionMessage("BAD_REQUEST"), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+    @RequestMapping(value = "/get_countries_names", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllCountriesNames(){
+
+        try {
+
+            return ResponseEntity.ok(countryService.getAllCountriesNames());
+
+        }catch (Exception e){
+            return new ResponseEntity<>(new DefaultExceptionMessage("BAD_REQUEST"), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(value = "/get_countries", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getAllCountries(){
+
+        try {
+
+            return ResponseEntity.ok(countryService.getAllCountries());
 
         }catch (Exception e){
             return new ResponseEntity<>(new DefaultExceptionMessage("BAD_REQUEST"), HttpStatus.BAD_REQUEST);
