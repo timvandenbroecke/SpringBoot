@@ -1,9 +1,15 @@
 package com.tim.webshop.models;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "Distributor")
+@EntityListeners(AuditingEntityListener.class)
 public class Distributor {
 
     public Distributor() {
@@ -24,6 +30,14 @@ public class Distributor {
 
     @Column(name = "email", unique = true, length = 255, nullable = false)
     private String email;
+
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @CreatedDate
+    private Date createdDate;
+
+    @Column(name = "modified_date")
+    @LastModifiedDate
+    private Date modifiedDate;
 
     public Long getId() {
         return id;
@@ -63,5 +77,29 @@ public class Distributor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 }

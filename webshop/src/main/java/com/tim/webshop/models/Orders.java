@@ -2,11 +2,16 @@ package com.tim.webshop.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Orders")
+@EntityListeners(AuditingEntityListener.class)
 public class Orders {
 
     public Orders() {
@@ -25,6 +30,14 @@ public class Orders {
     @ManyToOne
     @JoinColumn(name = "item_id")
     Item item;
+
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @CreatedDate
+    private Date createdDate;
+
+    @Column(name = "modified_date")
+    @LastModifiedDate
+    private Date modifiedDate;
 
     public Long getId() {
         return id;
@@ -50,6 +63,8 @@ public class Orders {
         this.item = item;
     }
 
+
+
     @Override
     public String toString() {
         return "Orders{" +
@@ -57,6 +72,22 @@ public class Orders {
                 ", users=" + users +
                 ", item=" + item +
                 '}';
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
     @Override
