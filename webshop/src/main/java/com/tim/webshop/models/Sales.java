@@ -14,7 +14,7 @@ public class Sales {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "total")
+    @Column(name = "total",  nullable = false)
     private Double total;
 
     @ManyToOne(targetEntity = Users.class)

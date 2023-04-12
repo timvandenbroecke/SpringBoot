@@ -19,19 +19,19 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name" , nullable = false)
+    @Column(name = "name" , nullable = false, length = 255)
     private String name;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price", nullable = false, length = 255)
     private Double price;
 
-    @Column(name = "quantity", nullable = false)
+    @Column(name = "quantity", nullable = false,  length = 255)
     private Integer quantity;
 
-    @Column(name = "image", nullable = false)
+    @Column(name = "image", nullable = false,  length = 255)
     private String image;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false,  length = 255)
     private String description;
 
     @Column(name = "type", nullable = false)

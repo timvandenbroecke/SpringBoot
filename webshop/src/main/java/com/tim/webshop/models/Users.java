@@ -42,31 +42,31 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", unique = true)
+    @Column(name = "username", unique = true, length = 255, nullable = false)
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", length = 255, nullable = false)
     private String password;
 
-    @Column(name = "firstname")
+    @Column(name = "firstname", length = 255, nullable = false)
     private String firstname;
 
-    @Column(name = "lastname")
+    @Column(name = "lastname", length = 255, nullable = false)
     private String lastname;
 
-    @Column(name = "postcode")
+    @Column(name = "postcode", length = 255, nullable = false)
     private String postcode;
 
-    @Column(name = "address")
+    @Column(name = "address", length = 255, nullable = false)
     private String address;
 
-    @Column(name = "city")
+    @Column(name = "city", length = 255, nullable = false)
     private String city;
 
-    @Column(name = "province")
+    @Column(name = "province", length = 255, nullable = false)
     private String province;
 
-    @Column(name = "country")
+    @Column(name = "country", length = 255, nullable = false)
     private String country;
 
     @JsonBackReference("user-order")

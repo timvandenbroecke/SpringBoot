@@ -13,16 +13,16 @@ public class Distributor {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", length = 255, nullable = false)
     private String name;
 
-    @Column(name = "address")
+    @Column(name = "address", length = 255, nullable = false)
     private String address;
 
-    @Column(name = "contactNumber")
+    @Column(name = "contactNumber", length = 255, nullable = false)
     private String contactNumber;
 
-    @Column(name = "email", unique = true)
+    @Column(name = "email", unique = true, length = 255, nullable = false)
     private String email;
 
     public Long getId() {
