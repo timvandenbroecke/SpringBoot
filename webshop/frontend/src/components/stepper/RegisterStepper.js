@@ -13,10 +13,14 @@ import {userEmailExists, registerUser} from "../../redux/actions";
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { compose } from 'redux';
+import Axios from '../../axios/Axios';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 
-  const steps = ['Account', 'Adress', 'Info'];
 
-
+const steps = ['Account', 'Adress', 'Info'];
 
 class RegisterStepper extends Component {
 
@@ -36,17 +40,23 @@ class RegisterStepper extends Component {
         city: "",
         postcode: "",
         province: "",
-        country: "",
+        country: "Belgium",
       },
       submitted: false,
       account: false,
       adress: false,
       info: false,
-      emailExists: false
+      emailExists: false,
+      countries: []
     }
   }
 
-  componentDidMount() {
+  async componentDidMount()  {
+    const axios = new Axios(this.props.dispatch);
+
+    const promise = await axios.get("/api/store/get_countries");
+    this.setState({countries: promise});
+
     // custom rule 
     ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
         if (value !== this.state.formData.password) {
@@ -107,9 +117,19 @@ class RegisterStepper extends Component {
   };
 
 
+  handleChangeCountry = (event) => {
+    console.log(event)
+    const {formData} = this.state;
+    formData["country"] = event.target.value;
+
+    this.setState({formData});
+  }
 
   accountStep = () =>{
     const {formData, submitted, activeStep} = this.state;
+
+    console.log(this.state.countries)
+
     return (
         <div className='form-register'>
             <ValidatorForm
@@ -172,8 +192,8 @@ class RegisterStepper extends Component {
 
 
   adressStep = () => {
-    const {formData, submitted, activeStep} = this.state;
-
+    const {formData, submitted, activeStep, countries} = this.state;
+    console.log(countries);
     return (
         <div className='form-register'>
           <ValidatorForm
@@ -242,16 +262,26 @@ class RegisterStepper extends Component {
                     errorMessages={[this.props.t("FIELD_REQUIRED")]}
                     value={formData.province || ""}
                 />
-                <TextValidator className='register-field'
-                    fullWidth={true}
-                    label={this.props.t("COUNTRY")}
-                    onChange={this.handleChangeForm}
-                    name="country"
-                    type="country"
-                    validators={['required']}
-                    errorMessages={[this.props.t("FIELD_REQUIRED")]}
+      
+                <FormControl fullWidth>
+
+                <InputLabel id="demo-simple-select-autowidth-label">{this.props.t("COUNTRY")}</InputLabel>
+                  <Select
                     value={formData.country || ""}
-                />
+                    onChange={(e) => this.handleChangeCountry(e)}
+                    label={this.props.t("COUNTRY")}
+                    displayEmpty
+                    inputProps={{ 'aria-label': 'Without label' }}
+                  >
+                    { countries.map(item => {
+                      return(
+                        <MenuItem key={item.id} value={item.name}>{item.name}</MenuItem>
+                      )
+                      })
+                    }
+
+                  </Select>
+                </FormControl>
                 <div className='form-button'>
                   <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2,  width: '40em'}}>
                       <Button

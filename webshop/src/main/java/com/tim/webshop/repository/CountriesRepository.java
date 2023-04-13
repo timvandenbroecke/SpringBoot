@@ -5,16 +5,17 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Set;
-
+@Repository
 public interface CountriesRepository extends JpaRepository<Countries, Long> {
 
-    @Query(name = "SELECT c.name FROM Countries c", nativeQuery = true)
+    @Query(value = "SELECT c.name FROM Countries c", nativeQuery = true)
     Set<Countries> getAllCountriesNames();
 
-    @Query(name = "SELECT * FROM Countries", nativeQuery = true)
+    @Query(value = "SELECT * FROM Countries", nativeQuery = true)
     Set<Countries> getAllCountries();
 
 

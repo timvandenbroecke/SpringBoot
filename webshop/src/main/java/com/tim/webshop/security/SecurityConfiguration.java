@@ -60,7 +60,7 @@ public class SecurityConfiguration {
 
         http.csrf().disable().cors().and()
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET, "/index**", "/static/**", "/*.js", "/*.json", "/*.ico", "/*.css", "/*.gif", "/api/store/get_items_total/**", "/api/user/emailexists/**", "/*.html").permitAll()
+                .requestMatchers(HttpMethod.GET, "/index**", "/static/**", "/*.js", "/*.json", "/*.ico", "/*.css", "/*.gif", "/api/store/get_items_total/**", "/api/user/emailexists/**", "/*.html", "/api/store/get_countries", "/api/store/get_countries_names").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/store/get_items").permitAll()
                 .requestMatchers(HttpMethod.POST,"/api/security/login", "/api/security/register", "/api/security/authenticate").permitAll()
                 .requestMatchers(HttpMethod.GET,  "/login", "/login/**", "/pages/login/**", "/error", "/**", "/watches", "/api/security/getuser/*").permitAll()
