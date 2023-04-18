@@ -15,6 +15,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import ProfileEdit from "../components/ProfileEdit";
 import Modals from "../components/modals/Modals";
+import CustomButton from "./buttons/CustomButton";
 
 function a11yProps(index) {
     return {
@@ -111,7 +112,7 @@ class Profile extends Component {
                                     <h3>{authenticateUser.country}</h3>
                                 </div>
                             </div>
-                            <Button variant="outlined" onClick={() => this.onEditProfile()}>{t("EDIT")}</Button>
+                            <CustomButton style={{paddingTop: "2rem"}}  variant="outlined" onClick={() => this.onEditProfile()}>{t("EDIT")}</CustomButton>
                         </Paper>
                     </TabPanel>
                     <TabPanel value={value} index={1}>
