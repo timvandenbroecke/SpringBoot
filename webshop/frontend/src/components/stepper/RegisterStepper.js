@@ -128,7 +128,6 @@ class RegisterStepper extends Component {
   accountStep = () =>{
     const {formData, submitted, activeStep} = this.state;
 
-    console.log(this.state.countries)
 
     return (
         <div className='form-register'>
@@ -308,7 +307,6 @@ class RegisterStepper extends Component {
     const {formData, submitted, activeStep} = this.state;
     const {t} = this.props;
 
-    console.log("formdata: ", formData);
 
     return (
       <div>

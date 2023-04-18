@@ -4,10 +4,13 @@ import { compose } from 'redux';
 import { withTranslation } from 'react-i18next';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import {updateUser} from "../redux/actions";
 import CustomButton from "./buttons/CustomButton";
-
+import Axios from "../axios/Axios";
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 
 class EditProfile extends Component {
     constructor(){
@@ -20,7 +23,8 @@ class EditProfile extends Component {
             postcode: "",
             city: "",
             province: "",
-            country: ""
+            country: "",
+            countries: []
         }
     }
 
@@ -46,7 +50,18 @@ class EditProfile extends Component {
         this.props.onCloseEditProfile();
     }
 
-    componentDidMount(){
+    handleChangeCountry = (event) => {
+           
+        this.setState({country: event.target.value});
+    }
+
+    async componentDidMount(){
+
+        const axios = new Axios(this.props.dispatch);
+
+        const promise = await axios.get("/api/store/get_countries");
+        this.setState({countries: promise});
+
         this.setState({
                         firstname:  this.props.authenticateUser.firstname,
                         lastname: this.props.authenticateUser.lastname,
@@ -54,15 +69,18 @@ class EditProfile extends Component {
                         city: this.props.authenticateUser.city,
                         postcode: this.props.authenticateUser.postcode,
                         province: this.props.authenticateUser.province,
-                        country: this.props.authenticateUser.country
-                     });
+                        country: this.props.authenticateUser.country,
+                        countries: promise
+        });
+
+
     }
 
 
     render(){
 
         const {authenticateUser, t} = this.props;
-        const {firstname, lastname, adress, city, postcode, province, country} = this.state;
+        const {firstname, lastname, adress, city, postcode, province, country, countries} = this.state;
 
 
         return (
@@ -153,19 +171,28 @@ class EditProfile extends Component {
                         />
                     </div>
                     <div>
-                        <TextField 
-                            className="textfield"
-                            id="outlined-basic" 
-                            label={t("COUNTRY")} 
-                            variant="outlined" 
-                            name="country"
-                            value={country}
-                            onChange={(e) => this.onChange(e)}
-                            fullWidth
-                        />
+                    <FormControl fullWidth>
+
+                    <InputLabel id="demo-simple-select-autowidth-label">{this.props.t("COUNTRY")}</InputLabel>
+                    <Select
+                        value={country || []}
+                        onChange={(e) => this.handleChangeCountry(e)}
+                        label={this.props.t("COUNTRY")}
+                        displayEmpty
+                        inputProps={{ 'aria-label': 'Without label' }}
+                    >
+                        { countries.map(item => {
+                        return(
+                            <MenuItem key={item.id} value={item.name}>{item.name}</MenuItem>
+                        )
+                        })
+                        }
+
+                    </Select>
+                    </FormControl>
                     </div>
                     <div>
-                        <CustomButton onClick={() => this.onClickSubmit()}>{t("SUBMIT")}</CustomButton>
+                        <CustomButton style={{paddingTop: "2rem"}} onClick={() => this.onClickSubmit()}>{t("SUBMIT")}</CustomButton>
                     </div>
 
                 </Paper>
