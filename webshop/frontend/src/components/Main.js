@@ -18,6 +18,7 @@ class Main extends Component {
                     <Grid item xs={12} md={12}>
                         <Carousel />
                     </Grid>
+                    
                     <Grid item xs={12} md={12}>
                         <Slide direction="left" triggerOnce>
                             <div className="paper-watches">

@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import {loginUser} from '../redux/actions';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import CustomButton from './buttons/CustomButton';
 
 
 
@@ -94,8 +95,7 @@ export default function Login({onCloseLogin}) {
                   errorMessages={[t("FIELD_REQUIRED")]}
               />
         
-              <button type='submit'>Login</button>
-
+              <CustomButton>Login</CustomButton>
             </ValidatorForm>
           </div>
         </div>

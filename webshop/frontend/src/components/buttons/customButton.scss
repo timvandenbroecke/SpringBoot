@@ -1,0 +1,51 @@
+.custom-button {
+
+    .btn,
+    .btn:visited {
+        text-decoration: none;
+        padding: 15px 40px;
+        display: inline-block;
+        border-radius: 100px;
+        transition: all .2s;
+        position: relative;
+        border: .5px solid black;
+
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.2);
+    }
+
+    .btn:active {
+        transform: translateY(-1px);
+    }
+
+    .btn::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    .btn-white {
+        background-color: #fff;
+        color: #777;
+    }
+
+    .btn-white::after {
+        background-color: #fff;        
+
+    }
+
+    .btn:hover::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+    }
+}
