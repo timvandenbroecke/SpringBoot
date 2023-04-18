@@ -6,6 +6,8 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {updateUser} from "../redux/actions";
+import CustomButton from "./buttons/CustomButton";
+
 
 class EditProfile extends Component {
     constructor(){
@@ -150,7 +152,7 @@ class EditProfile extends Component {
                         />
                     </div>
                     <div>
-                        <Button onClick={() => this.onClickSubmit()} variant="outlined" >{t("SUBMIT")}</Button>
+                        <CustomButton onClick={() => this.onClickSubmit()}>{t("SUBMIT")}</CustomButton>
                     </div>
 
                 </Paper>
