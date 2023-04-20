@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import Main from "./components/Main";
+import Header from "./components/Header";
+import SideBar from "./components/SideBar";
 
 class App extends Component {
   constructor(){
@@ -12,8 +14,13 @@ class App extends Component {
 
   render(){
     return (
-      <div className="App">
-        <Main />
+      <div className="container">
+        <Header />
+        <div className="content">
+          <SideBar />
+          <Main />
+        </div>
+        
       </div>
     );
   }
