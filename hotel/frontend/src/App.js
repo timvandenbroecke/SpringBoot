@@ -1,11 +1,24 @@
+import React, {Component} from "react";
+import Main from "./components/Main";
+
+class App extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+
+    }
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <Main />
+      </div>
+    );
+  }
 
 
-function App() {
-  return (
-    <div className="App">
-      Hotel
-    </div>
-  );
 }
 
 export default App;
