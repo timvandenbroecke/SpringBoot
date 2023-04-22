@@ -1,7 +1,22 @@
 import React, {Component} from "react";
+import {
+  Routes, 
+  Route,
+  Navigate
+} from "react-router-dom";
 import Main from "./components/Main";
 import Header from "./components/Header";
 import SideBar from "./components/SideBar";
+
+
+function Protected({ isAuthenticated, children }) {
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />
+  }
+  return children
+}
+
+
 
 class App extends Component {
   constructor(){
@@ -18,7 +33,10 @@ class App extends Component {
         <Header />
         <div className="content">
           <SideBar />
-          <Main />
+          <Routes>
+            <Route exact path="/" element={<Main />} />
+            <Route path='*' element={<Main />}/>
+          </Routes>
         </div>
         
       </div>
