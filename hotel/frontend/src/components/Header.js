@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Link } from "react-router-dom";
 
 import logo from "../img/logo.png";
 import user from "../img/user.jpg";
@@ -37,22 +38,28 @@ class Header extends Component {
                     </button>
                 </form>
                 <nav className="user-nav">
-                    <div className="user-nav__icon-box" onClick={() => window.location.replace('http://localhost:3000/' + "bookmark")}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="user-nav__icon">
-                            <use href={sprite + "#icon-bookmark"} />
-                        </svg>
-                        <span className="user-nav__notification">7</span>
-                    </div>
-                    <div className="user-nav__icon-box"  onClick={() => window.location.replace('http://localhost:3000/' + "notification")}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="user-nav__icon">
-                            <use href={sprite + "#icon-chat"} />
-                        </svg>
-                        <span className="user-nav__notification">13</span>
-                    </div>
-                    <div className="user-nav__user" onClick={() => window.location.replace('http://localhost:3000/' + "profile")}>
-                        <img src={user} className="user-nav__user-photo" />
-                        <span className="user-nav__user-name">Jonas</span>
-                    </div>
+                    <Link to="/bookmark" preventScrollReset={true} className="link">
+                        <div className="user-nav__icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="user-nav__icon">
+                                <use href={sprite + "#icon-bookmark"} />
+                            </svg>
+                            <span className="user-nav__notification">7</span>
+                        </div>
+                    </Link>
+                    <Link to="/notification" preventScrollReset={true} className="link">
+                        <div className="user-nav__icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="user-nav__icon">
+                                <use href={sprite + "#icon-chat"} />
+                            </svg>
+                            <span className="user-nav__notification">13</span>
+                        </div>
+                    </Link>
+                    <Link to="/profile" preventScrollReset={true} className="link">
+                        <div className="user-nav__user">
+                            <img src={user} className="user-nav__user-photo" />
+                            <span className="user-nav__user-name">Jonas</span>
+                        </div>
+                    </Link>
                 </nav>
             </header>
         );

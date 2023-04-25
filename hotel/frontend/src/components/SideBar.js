@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Link } from "react-router-dom";
 
 import sprite from "../svg/sprite.svg";
 
@@ -17,50 +18,57 @@ class SideBar extends Component {
 
 
     handleSidebarActive = (name) => {
-        window.location.replace('http://localhost:3000/' + name);
         if(name !== this.state.last_active) this.setState({[name]: true, [this.state.last_active]: false, last_active: name});
     }
 
 
     render(){
 
-        const {sidebar_active_1, sidebar_active_2, sidebar_active_3, sidebar_active_4} = this.state;
+        const {hotel, flight, car_rental, tours} = this.state;
 
         return(
             <div className="sidebar">
                 <ul className="side-nav">
-                    <li onClick={() => this.handleSidebarActive("hotel")}  className={!sidebar_active_1 ? "side-nav__item" : "side-nav__item  side-nav__item--active"}>
-                        <a href="#" className="side-nav__link">
-                            <svg className="side-nav__icon">
-                                <use href={sprite + "#icon-home"} />
-                            </svg>
-                            <span>Hotel</span>
-                        </a>
-                    </li>
-                    <li onClick={() => this.handleSidebarActive("flight")} className={!sidebar_active_2 ? "side-nav__item" : "side-nav__item  side-nav__item--active"}>
-                        <a href="#" className="side-nav__link">
-                            <svg className="side-nav__icon">
-                                <use href={sprite + "#icon-aircraft-take-off"} />
-                            </svg>
-                            <span>Flight</span>
-                        </a>
-                    </li>
-                    <li onClick={() => this.handleSidebarActive("car_rental")}  className={!sidebar_active_3 ? "side-nav__item" : "side-nav__item  side-nav__item--active"}>
-                        <a href="#" className="side-nav__link">
-                            <svg className="side-nav__icon">
-                                <use href={sprite + "#icon-key"} />
-                            </svg>
-                            <span>Car rental</span>
-                        </a>
-                    </li>
-                    <li onClick={() => this.handleSidebarActive("tours")}  className={!sidebar_active_4 ? "side-nav__item" : "side-nav__item  side-nav__item--active"}>
-                        <a href="#" className="side-nav__link">
-                            <svg className="side-nav__icon">
-                                <use href={sprite + "#icon-map"} />
-                            </svg>
-                            <span>Tours</span>
-                        </a>
-                    </li>
+                    <Link to="/hotel" preventScrollReset={true} className="link">
+                        <li onClick={() => this.handleSidebarActive("hotel")}  className={!hotel ? "side-nav__item" : "side-nav__item  side-nav__item--active"}>
+                            <a href="#" className="side-nav__link">
+                                <svg className="side-nav__icon">
+                                    <use href={sprite + "#icon-home"} />
+                                </svg>
+                                <span>Hotel</span>
+                            </a>
+                        </li>
+                    </Link>
+                    <Link to="/flight" preventScrollReset={true} className="link">
+                        <li onClick={() => this.handleSidebarActive("flight")} className={!flight ? "side-nav__item" : "side-nav__item  side-nav__item--active"}>
+                            <a href="#" className="side-nav__link">
+                                <svg className="side-nav__icon">
+                                    <use href={sprite + "#icon-aircraft-take-off"} />
+                                </svg>
+                                <span>Flight</span>
+                            </a>
+                        </li>
+                    </Link>
+                    <Link to="/car_rental" preventScrollReset={true} className="link">
+                        <li onClick={() => this.handleSidebarActive("car_rental")}  className={!car_rental ? "side-nav__item" : "side-nav__item  side-nav__item--active"}>
+                            <a href="#" className="side-nav__link">
+                                <svg className="side-nav__icon">
+                                    <use href={sprite + "#icon-key"} />
+                                </svg>
+                                <span>Car rental</span>
+                            </a>
+                        </li>
+                    </Link>
+                    <Link to="/tours" preventScrollReset={true} className="link">
+                        <li onClick={() => this.handleSidebarActive("tours")}  className={!tours ? "side-nav__item" : "side-nav__item  side-nav__item--active"}>
+                            <a href="#" className="side-nav__link">
+                                <svg className="side-nav__icon">
+                                    <use href={sprite + "#icon-map"} />
+                                </svg>
+                                <span>Tours</span>
+                            </a>
+                        </li>
+                    </Link>
                 </ul>
                 <div className="legal">
                     &copy; 2020 by Hotel. All rights reserved.
