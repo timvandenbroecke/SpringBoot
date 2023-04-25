@@ -1,5 +1,4 @@
-import React, {Component} from "react";
-
+import React, {Component} from 'react';
 import sprite from '../svg/sprite.svg';
 import hotel1 from '../img/hotel-1.jpg';
 import hotel2 from '../img/hotel-2.jpg';
@@ -9,23 +8,18 @@ import user2 from '../img/user-2.jpg';
 import user3 from '../img/user-3.jpg';
 import user4 from '../img/user-4.jpg';
 
-
-
-
-class Main extends Component {
+class HotelView extends Component {
     constructor(){
         super();
-
-        this.state = {
-
-        }
     }
+
+
 
 
 
     render(){
 
-        return(
+        return (
             <div className="hotel-view">
                 <div className="gallery">
                     <figure className="gallery__item">
@@ -137,10 +131,9 @@ class Main extends Component {
 
                     </figure>
                 </div>
-
             </div>
         );
     }
 }
 
-export default Main;
+export default HotelView
