@@ -438,3 +438,18 @@
 
     }
 }
+
+.hotel-view {
+
+    &__carousel {
+
+        display: flex;
+        justify-content: space-around;
+        margin-top: 3em;
+    }
+
+    &__carousel-description {
+        display: contents;
+    }
+
+}
