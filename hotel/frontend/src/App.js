@@ -14,7 +14,7 @@ import BookMark from "./components/BookMark";
 import Flight from "./components/Flight";
 import CarRental from "./components/CarRental";
 import Tours from "./components/Tours";
-
+import SearchView from "./components/common/SearchView";
 
 function Protected({ isAuthenticated, children }) {
   if (!isAuthenticated) {
@@ -50,7 +50,7 @@ class App extends Component {
             <Route exact path="/flight" element={<Flight />} />
             <Route exact path="/car_rental" element={<CarRental />} />
             <Route exact path="/tours" element={<Tours />} />
-
+            <Route exact path="/search" element={<SearchView />} />
           </Routes>
         </div>
         

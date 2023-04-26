@@ -1,37 +1,38 @@
-import React, {Component} from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import {searchHotel} from '../redux/actions/searchAction.js';
 
 import logo from "../img/logo.png";
 import user from "../img/user.jpg";
 import sprite from "../svg/sprite.svg";
 
-class Header extends Component {
-    constructor(){
-        super();
+export default function Header() {
 
-        this.state = {
-            search: ""
-        }
-    }
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
 
+    // Redux props
+    const search = useSelector((state) => state.search);
 
-    onHandleSearch = (event) => {
+    const onHandleSearch = (event) => {
         
-        this.setState({search: event.target.value});
+        dispatch(searchHotel(event.target.value));
     }
 
-    onClickSearch = () => {
-
+    const onClickSearch = (event) => {
+    
+        event.preventDefault();
+        navigate('/search');
     }
 
-    render(){
-        const {search} = this.state;
         return(
             <header className="header">
                 <img src={logo} alt="logo" className="logo" />
                 <form action="#" className="search">
-                    <input value={search} onChange={(e) => this.onHandleSearch(e)} type="text" className="search__input" placeholder="Search hotels"/>
-                    <button className="search__button" onClick={() => this.onClickSearch}>
+                    <input value={search} onChange={(e) => onHandleSearch(e)} type="text" className="search__input" placeholder="Search hotels"/>
+                    <button className="search__button" onClick={(event) => onClickSearch(event)} onKeyDown={(event) => onClickSearch(event)}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="search__icon">
                             <use href={sprite + "#icon-magnifying-glass"} />
                         </svg>
@@ -63,7 +64,6 @@ class Header extends Component {
                 </nav>
             </header>
         );
-    }
+    
 }
 
-export default Header;

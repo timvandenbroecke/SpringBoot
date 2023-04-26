@@ -1,0 +1,45 @@
+.carousel {
+    width: 90%;
+    
+    box-shadow: 0 2rem  6rem rgba($color: #000000, $alpha: .3);
+
+    &__container {
+        
+
+    }
+
+    &__container-item {
+        height: 28em;
+    }
+}
+
+.carousel-paper {
+    height: 28em;
+
+    &__name {
+        text-align: center;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    &__image {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5rem;
+        padding-right: 5rem;
+        
+
+    }
+
+    &__image-item {
+        width: 18rem;
+        height: 12rem;
+
+        border-radius: 5px;
+    }
+
+    &__description {
+        padding-left: 5rem;
+
+    }
+}
