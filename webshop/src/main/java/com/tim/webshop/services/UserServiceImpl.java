@@ -88,6 +88,8 @@ public class UserServiceImpl implements UserDetailsService, UserService{
         Users nUser = user;
         nUser.setPassword(passwordEncoder.encode(user.getPassword()));
 
+
+
         Role role = roleRepository.getOne(1L);
         Set<Role> roleSet = new HashSet<>();
         roleSet.add(role);
@@ -95,6 +97,5 @@ public class UserServiceImpl implements UserDetailsService, UserService{
         nUser.setRoles(roleSet);
         return userRepository.saveAndFlush(nUser);
     }
-
 
 }
